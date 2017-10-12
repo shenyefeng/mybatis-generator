@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ public class ProviderCountByExampleMethodGenerator extends
                 introspectedTable.getCountByExampleStatementId());
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setReturnType(FullyQualifiedJavaType.getStringInstance());
-        method.addParameter(new Parameter(fqjt, "example")); //$NON-NLS-1$
+        method.addParameter(new Parameter(fqjt, "criteria")); //$NON-NLS-1$
         
         context.getCommentGenerator().addGeneralMethodComment(method,
                 introspectedTable);
@@ -69,13 +69,13 @@ public class ProviderCountByExampleMethodGenerator extends
         	method.addBodyLine("SELECT(\"count(*)\");"); //$NON-NLS-1$
         	method.addBodyLine(String.format("FROM(\"%s\");", //$NON-NLS-1$
                 escapeStringForJava(introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime())));
-        	method.addBodyLine("applyWhere(example, false);"); //$NON-NLS-1$
+        	method.addBodyLine("applyWhere(criteria, false);"); //$NON-NLS-1$
         	method.addBodyLine("return SQL();"); //$NON-NLS-1$
         } else {
         	method.addBodyLine("SQL sql = new SQL();"); //$NON-NLS-1$
         	method.addBodyLine(String.format("sql.SELECT(\"count(*)\").FROM(\"%s\");", //$NON-NLS-1$
                 escapeStringForJava(introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime())));
-        	method.addBodyLine("applyWhere(sql, example, false);"); //$NON-NLS-1$
+        	method.addBodyLine("applyWhere(sql, criteria, false);"); //$NON-NLS-1$
         	method.addBodyLine("return sql.toString();"); //$NON-NLS-1$
         }
         

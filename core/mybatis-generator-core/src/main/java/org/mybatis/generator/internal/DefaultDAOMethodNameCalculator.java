@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -78,7 +78,7 @@ public class DefaultDAOMethodNameCalculator implements DAOMethodNameCalculator {
 
     public String getDeleteByExampleMethodName(
             IntrospectedTable introspectedTable) {
-        return "deleteByExample"; //$NON-NLS-1$
+        return "deleteByCriteria"; //$NON-NLS-1$
     }
 
     public String getDeleteByPrimaryKeyMethodName(
@@ -87,34 +87,34 @@ public class DefaultDAOMethodNameCalculator implements DAOMethodNameCalculator {
     }
 
     /**
-     * 1. if this will be the only selectByExample, then the result should be
-     * selectByExample. 2. Else the method name should be
-     * selectByExampleWithoutBLOBs
+     * 1. if this will be the only selectByCriteria, then the result should be
+     * selectByCriteria. 2. Else the method name should be
+     * selectByCriteriaWithoutBLOBs
      */
     public String getSelectByExampleWithoutBLOBsMethodName(
             IntrospectedTable introspectedTable) {
         Rules rules = introspectedTable.getRules();
 
         if (!rules.generateSelectByExampleWithBLOBs()) {
-            return "selectByExample"; //$NON-NLS-1$
+            return "selectByCriteria"; //$NON-NLS-1$
         } else {
-            return "selectByExampleWithoutBLOBs"; //$NON-NLS-1$
+            return "selectByCriteriaWithoutBLOBs"; //$NON-NLS-1$
         }
     }
 
     /**
-     * 1. if this will be the only selectByExample, then the result should be
-     * selectByExample. 2. Else the method name should be
-     * selectByExampleWithBLOBs
+     * 1. if this will be the only selectByCriteria, then the result should be
+     * selectByCriteria. 2. Else the method name should be
+     * selectByCriteriaWithBLOBs
      */
     public String getSelectByExampleWithBLOBsMethodName(
             IntrospectedTable introspectedTable) {
         Rules rules = introspectedTable.getRules();
 
         if (!rules.generateSelectByExampleWithoutBLOBs()) {
-            return "selectByExample"; //$NON-NLS-1$
+            return "selectByCriteria"; //$NON-NLS-1$
         } else {
-            return "selectByExampleWithBLOBs"; //$NON-NLS-1$
+            return "selectByCriteriaWithBLOBs"; //$NON-NLS-1$
         }
     }
 
@@ -130,12 +130,12 @@ public class DefaultDAOMethodNameCalculator implements DAOMethodNameCalculator {
 
     public String getCountByExampleMethodName(
             IntrospectedTable introspectedTable) {
-        return "countByExample"; //$NON-NLS-1$
+        return "countByCriteria"; //$NON-NLS-1$
     }
 
     public String getUpdateByExampleSelectiveMethodName(
             IntrospectedTable introspectedTable) {
-        return "updateByExampleSelective"; //$NON-NLS-1$
+        return "updateByCriteriaSelective"; //$NON-NLS-1$
     }
 
     public String getUpdateByExampleWithBLOBsMethodName(
@@ -143,11 +143,11 @@ public class DefaultDAOMethodNameCalculator implements DAOMethodNameCalculator {
         Rules rules = introspectedTable.getRules();
 
         if (!rules.generateUpdateByExampleWithoutBLOBs()) {
-            return "updateByExample"; //$NON-NLS-1$
+            return "updateByCriteria"; //$NON-NLS-1$
         } else if (rules.generateRecordWithBLOBsClass()) {
-            return "updateByExample"; //$NON-NLS-1$
+            return "updateByCriteria"; //$NON-NLS-1$
         } else {
-            return "updateByExampleWithBLOBs"; //$NON-NLS-1$
+            return "updateByCriteriaWithBLOBs"; //$NON-NLS-1$
         }
     }
 
@@ -156,11 +156,11 @@ public class DefaultDAOMethodNameCalculator implements DAOMethodNameCalculator {
         Rules rules = introspectedTable.getRules();
 
         if (!rules.generateUpdateByExampleWithBLOBs()) {
-            return "updateByExample"; //$NON-NLS-1$
+            return "updateByCriteria"; //$NON-NLS-1$
         } else if (rules.generateRecordWithBLOBsClass()) {
-            return "updateByExample"; //$NON-NLS-1$
+            return "updateByCriteria"; //$NON-NLS-1$
         } else {
-            return "updateByExampleWithoutBLOBs"; //$NON-NLS-1$
+            return "updateByCriteriaWithoutBLOBs"; //$NON-NLS-1$
         }
     }
 

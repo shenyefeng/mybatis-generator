@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ public class CountByExampleMethodGenerator extends AbstractDAOElementGenerator {
         sb.append("Long count = (Long)  "); //$NON-NLS-1$
         sb.append(daoTemplate.getQueryForObjectMethod(introspectedTable
                 .getIbatis2SqlMapNamespace(), introspectedTable
-                .getCountByExampleStatementId(), "example")); //$NON-NLS-1$
+                .getCountByExampleStatementId(), "criteria")); //$NON-NLS-1$
         method.addBodyLine(sb.toString());
 
         if (generateForJava5) {
@@ -90,7 +90,7 @@ public class CountByExampleMethodGenerator extends AbstractDAOElementGenerator {
         method.setReturnType(new FullyQualifiedJavaType("long")); //$NON-NLS-1$
         method.setName(getDAOMethodNameCalculator()
                 .getCountByExampleMethodName(introspectedTable));
-        method.addParameter(new Parameter(type, "example")); //$NON-NLS-1$
+        method.addParameter(new Parameter(type, "criteria")); //$NON-NLS-1$
 
         for (FullyQualifiedJavaType fqjt : daoTemplate.getCheckedExceptions()) {
             method.addException(fqjt);
