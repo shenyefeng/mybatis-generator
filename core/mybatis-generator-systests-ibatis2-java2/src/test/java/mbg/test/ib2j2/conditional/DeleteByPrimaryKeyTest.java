@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -24,16 +24,16 @@ import mbg.test.ib2j2.generated.conditional.dao.PkfieldsDAO;
 import mbg.test.ib2j2.generated.conditional.dao.PkfieldsblobsDAO;
 import mbg.test.ib2j2.generated.conditional.dao.PkonlyDAO;
 import mbg.test.ib2j2.generated.conditional.model.AwfulTable;
-import mbg.test.ib2j2.generated.conditional.model.AwfulTableExample;
+import mbg.test.ib2j2.generated.conditional.model.AwfulTableCriteria;
 import mbg.test.ib2j2.generated.conditional.model.Pkblobs;
-import mbg.test.ib2j2.generated.conditional.model.PkblobsExample;
+import mbg.test.ib2j2.generated.conditional.model.PkblobsCriteria;
 import mbg.test.ib2j2.generated.conditional.model.Pkfields;
-import mbg.test.ib2j2.generated.conditional.model.PkfieldsExample;
+import mbg.test.ib2j2.generated.conditional.model.PkfieldsCriteria;
 import mbg.test.ib2j2.generated.conditional.model.PkfieldsKey;
 import mbg.test.ib2j2.generated.conditional.model.Pkfieldsblobs;
-import mbg.test.ib2j2.generated.conditional.model.PkfieldsblobsExample;
+import mbg.test.ib2j2.generated.conditional.model.PkfieldsblobsCriteria;
 import mbg.test.ib2j2.generated.conditional.model.PkfieldsblobsKey;
-import mbg.test.ib2j2.generated.conditional.model.PkonlyExample;
+import mbg.test.ib2j2.generated.conditional.model.PkonlyCriteria;
 import mbg.test.ib2j2.generated.conditional.model.PkonlyKey;
 
 public class DeleteByPrimaryKeyTest extends AbstractConditionalJava2Test {
@@ -52,8 +52,8 @@ public class DeleteByPrimaryKeyTest extends AbstractConditionalJava2Test {
             key.setSeqNum(new Integer(6));
             dao.insert(key);
     
-            PkonlyExample example = new PkonlyExample();
-            List answer = dao.selectByExample(example);
+            PkonlyCriteria example = new PkonlyCriteria();
+            List answer = dao.selectByCriteria(example);
             assertEquals(2, answer.size());
     
             key = new PkonlyKey();
@@ -62,7 +62,7 @@ public class DeleteByPrimaryKeyTest extends AbstractConditionalJava2Test {
             int rows = dao.deleteByPrimaryKey(key);
             assertEquals(1, rows);
     
-            answer = dao.selectByExample(example);
+            answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
         } catch (Exception e) {
             fail(e.getMessage());
@@ -88,8 +88,8 @@ public class DeleteByPrimaryKeyTest extends AbstractConditionalJava2Test {
             int rows = dao.deleteByPrimaryKey(key);
             assertEquals(1, rows);
     
-            PkfieldsExample example = new PkfieldsExample();
-            List answer = dao.selectByExample(example);
+            PkfieldsCriteria example = new PkfieldsCriteria();
+            List answer = dao.selectByCriteria(example);
             assertEquals(0, answer.size());
         } catch (Exception e) {
             fail(e.getMessage());
@@ -106,15 +106,15 @@ public class DeleteByPrimaryKeyTest extends AbstractConditionalJava2Test {
             record.setBlob2(TestUtilities.generateRandomBlob());
             dao.insert(record);
     
-            PkblobsExample example = new PkblobsExample();
-            List answer = dao.selectByExampleWithoutBLOBs(example);
+            PkblobsCriteria example = new PkblobsCriteria();
+            List answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(1, answer.size());
     
             int rows = dao.deleteByPrimaryKey(new Integer(3));
             assertEquals(1, rows);
     
-            example = new PkblobsExample();
-            answer = dao.selectByExampleWithoutBLOBs(example);
+            example = new PkblobsCriteria();
+            answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(0, answer.size());
         } catch (Exception e) {
             fail(e.getMessage());
@@ -141,8 +141,8 @@ public class DeleteByPrimaryKeyTest extends AbstractConditionalJava2Test {
             record.setBlob1(TestUtilities.generateRandomBlob());
             dao.insert(record);
     
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
-            List answer = dao.selectByExampleWithoutBLOBs(example);
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
+            List answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(2, answer.size());
     
             PkfieldsblobsKey key = new PkfieldsblobsKey();
@@ -151,8 +151,8 @@ public class DeleteByPrimaryKeyTest extends AbstractConditionalJava2Test {
             int rows = dao.deleteByPrimaryKey(key);
             assertEquals(1, rows);
     
-            example = new PkfieldsblobsExample();
-            answer = dao.selectByExampleWithoutBLOBs(example);
+            example = new PkfieldsblobsCriteria();
+            answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(1, answer.size());
         } catch (Exception e) {
             fail(e.getMessage());
@@ -181,8 +181,8 @@ public class DeleteByPrimaryKeyTest extends AbstractConditionalJava2Test {
             int rows = dao.deleteByPrimaryKey(generatedCustomerId);
             assertEquals(1, rows);
     
-            AwfulTableExample example = new AwfulTableExample();
-            List answer = dao.selectByExample(example);
+            AwfulTableCriteria example = new AwfulTableCriteria();
+            List answer = dao.selectByCriteria(example);
             assertEquals(0, answer.size());
         } catch (Exception e) {
             fail(e.getMessage());

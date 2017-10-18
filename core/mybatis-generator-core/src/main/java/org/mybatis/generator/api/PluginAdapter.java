@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -79,22 +79,22 @@ public abstract class PluginAdapter implements Plugin {
         return null;
     }
 
-    public boolean clientCountByExampleMethodGenerated(Method method,
+    public boolean clientCountByCriteriaMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientCountByExampleMethodGenerated(Method method,
+    public boolean clientCountByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientDeleteByExampleMethodGenerated(Method method,
+    public boolean clientDeleteByCriteriaMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientDeleteByExampleMethodGenerated(Method method,
+    public boolean clientDeleteByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;
     }
@@ -125,22 +125,22 @@ public abstract class PluginAdapter implements Plugin {
         return true;
     }
 
-    public boolean clientSelectByExampleWithBLOBsMethodGenerated(Method method,
+    public boolean clientSelectByCriteriaWithBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientSelectByExampleWithBLOBsMethodGenerated(Method method,
+    public boolean clientSelectByCriteriaWithBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientSelectByExampleWithoutBLOBsMethodGenerated(Method method,
+    public boolean clientSelectByCriteriaWithoutBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientSelectByExampleWithoutBLOBsMethodGenerated(Method method,
+    public boolean clientSelectByCriteriaWithoutBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;
     }
@@ -155,32 +155,32 @@ public abstract class PluginAdapter implements Plugin {
         return true;
     }
 
-    public boolean clientUpdateByExampleSelectiveMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaSelectiveMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientUpdateByExampleSelectiveMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaSelectiveMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientUpdateByExampleWithBLOBsMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaWithBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientUpdateByExampleWithBLOBsMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaWithBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientUpdateByExampleWithoutBLOBsMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaWithoutBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean clientUpdateByExampleWithoutBLOBsMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaWithoutBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;
     }
@@ -263,12 +263,12 @@ public abstract class PluginAdapter implements Plugin {
         return true;
     }
 
-    public boolean sqlMapCountByExampleElementGenerated(XmlElement element,
+    public boolean sqlMapCountByCriteriaElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean sqlMapDeleteByExampleElementGenerated(XmlElement element,
+    public boolean sqlMapDeleteByCriteriaElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable) {
         return true;
     }
@@ -303,12 +303,12 @@ public abstract class PluginAdapter implements Plugin {
         return true;
     }
 
-    public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(
+    public boolean sqlMapSelectByCriteriaWithoutBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean sqlMapSelectByExampleWithBLOBsElementGenerated(
+    public boolean sqlMapSelectByCriteriaWithBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         return true;
     }
@@ -318,17 +318,17 @@ public abstract class PluginAdapter implements Plugin {
         return true;
     }
 
-    public boolean sqlMapUpdateByExampleSelectiveElementGenerated(
+    public boolean sqlMapUpdateByCriteriaSelectiveElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean sqlMapUpdateByExampleWithBLOBsElementGenerated(
+    public boolean sqlMapUpdateByCriteriaWithBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean sqlMapUpdateByExampleWithoutBLOBsElementGenerated(
+    public boolean sqlMapUpdateByCriteriaWithoutBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         return true;
     }
@@ -386,12 +386,12 @@ public abstract class PluginAdapter implements Plugin {
         return true;
     }
 
-    public boolean providerCountByExampleMethodGenerated(Method method,
+    public boolean providerCountByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean providerDeleteByExampleMethodGenerated(Method method,
+    public boolean providerDeleteByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;
     }
@@ -401,31 +401,31 @@ public abstract class PluginAdapter implements Plugin {
         return true;
     }
 
-    public boolean providerSelectByExampleWithBLOBsMethodGenerated(
+    public boolean providerSelectByCriteriaWithBLOBsMethodGenerated(
             Method method, TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean providerSelectByExampleWithoutBLOBsMethodGenerated(
+    public boolean providerSelectByCriteriaWithoutBLOBsMethodGenerated(
             Method method, TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean providerUpdateByExampleSelectiveMethodGenerated(
+    public boolean providerUpdateByCriteriaSelectiveMethodGenerated(
             Method method, TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean providerUpdateByExampleWithBLOBsMethodGenerated(
+    public boolean providerUpdateByCriteriaWithBLOBsMethodGenerated(
             Method method, TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         return true;
     }
 
-    public boolean providerUpdateByExampleWithoutBLOBsMethodGenerated(
+    public boolean providerUpdateByCriteriaWithoutBLOBsMethodGenerated(
             Method method, TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         return true;

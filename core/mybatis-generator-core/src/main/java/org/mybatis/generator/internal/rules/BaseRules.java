@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -201,17 +201,17 @@ public abstract class BaseRules implements Rules {
 
     /**
      * Implements the rule for generating the delete by example SQL Map element
-     * and DAO method. If the deleteByExample statement is allowed, then
+     * and DAO method. If the deleteByCriteria statement is allowed, then
      * generate the element and method.
      * 
      * @return true if the element and method should be generated
      */
-    public boolean generateDeleteByExample() {
+    public boolean generateDeleteByCriteria() {
         if (isModelOnly) {
             return false;
         }
         
-        boolean rc = tableConfiguration.isDeleteByExampleStatementEnabled();
+        boolean rc = tableConfiguration.isDeleteByCriteriaStatementEnabled();
 
         return rc;
     }
@@ -227,7 +227,7 @@ public abstract class BaseRules implements Rules {
             return true;
         }
         
-        boolean rc = tableConfiguration.isSelectByExampleStatementEnabled()
+        boolean rc = tableConfiguration.isSelectByCriteriaStatementEnabled()
                 || tableConfiguration.isSelectByPrimaryKeyStatementEnabled();
 
         return rc;
@@ -247,7 +247,7 @@ public abstract class BaseRules implements Rules {
             if (isModelOnly) {
                 rc = true;
             } else {
-                rc = tableConfiguration.isSelectByExampleStatementEnabled() 
+                rc = tableConfiguration.isSelectByCriteriaStatementEnabled() 
                         || tableConfiguration.isSelectByPrimaryKeyStatementEnabled();
             }
         } else {
@@ -260,11 +260,11 @@ public abstract class BaseRules implements Rules {
     /**
      * Implements the rule for generating the SQL example where clause element.
      * 
-     * In iBATIS2, generate the element if the selectByExample, deleteByExample,
-     * updateByExample, or countByExample statements are allowed.
+     * In iBATIS2, generate the element if the selectByCriteria, deleteByCriteria,
+     * updateByCriteria, or countByCriteria statements are allowed.
      * 
-     * In MyBatis3, generate the element if the selectByExample,
-     * deleteByExample, or countByExample statements are allowed.
+     * In MyBatis3, generate the element if the selectByCriteria,
+     * deleteByCriteria, or countByCriteria statements are allowed.
      * 
      * @return true if the SQL where clause element should be generated
      */
@@ -273,12 +273,12 @@ public abstract class BaseRules implements Rules {
             return false;
         }
         
-        boolean rc = tableConfiguration.isSelectByExampleStatementEnabled()
-                || tableConfiguration.isDeleteByExampleStatementEnabled()
-                || tableConfiguration.isCountByExampleStatementEnabled();
+        boolean rc = tableConfiguration.isSelectByCriteriaStatementEnabled()
+                || tableConfiguration.isDeleteByCriteriaStatementEnabled()
+                || tableConfiguration.isCountByCriteriaStatementEnabled();
 
         if (introspectedTable.getTargetRuntime() == TargetRuntime.IBATIS2) {
-            rc |= tableConfiguration.isUpdateByExampleStatementEnabled();
+            rc |= tableConfiguration.isUpdateByCriteriaStatementEnabled();
         }
 
         return rc;
@@ -290,18 +290,18 @@ public abstract class BaseRules implements Rules {
      * 
      * In iBATIS2, do not generate the element.
      * 
-     * In MyBatis3, generate the element if the updateByExample statements are
+     * In MyBatis3, generate the element if the updateByCriteria statements are
      * allowed.
      * 
      * @return true if the SQL where clause element should be generated
      */
-    public boolean generateMyBatis3UpdateByExampleWhereClause() {
+    public boolean generateMyBatis3UpdateByCriteriaWhereClause() {
         if (isModelOnly) {
             return false;
         }
         
         return introspectedTable.getTargetRuntime() == TargetRuntime.MYBATIS3
-                && tableConfiguration.isUpdateByExampleStatementEnabled();
+                && tableConfiguration.isUpdateByCriteriaStatementEnabled();
     }
 
     /**
@@ -327,33 +327,33 @@ public abstract class BaseRules implements Rules {
 
     /**
      * Implements the rule for generating the select by example without BLOBs
-     * SQL Map element and DAO method. If the selectByExample statement is
+     * SQL Map element and DAO method. If the selectByCriteria statement is
      * allowed, then generate the element and method.
      * 
      * @return true if the element and method should be generated
      */
-    public boolean generateSelectByExampleWithoutBLOBs() {
+    public boolean generateSelectByCriteriaWithoutBLOBs() {
         if (isModelOnly) {
             return false;
         }
         
-        return tableConfiguration.isSelectByExampleStatementEnabled();
+        return tableConfiguration.isSelectByCriteriaStatementEnabled();
     }
 
     /**
      * Implements the rule for generating the select by example with BLOBs SQL
      * Map element and DAO method. If the table has BLOB fields and the
-     * selectByExample statement is allowed, then generate the element and
+     * selectByCriteria statement is allowed, then generate the element and
      * method.
      * 
      * @return true if the element and method should be generated
      */
-    public boolean generateSelectByExampleWithBLOBs() {
+    public boolean generateSelectByCriteriaWithBLOBs() {
         if (isModelOnly) {
             return false;
         }
         
-        boolean rc = tableConfiguration.isSelectByExampleStatementEnabled()
+        boolean rc = tableConfiguration.isSelectByCriteriaStatementEnabled()
                 && introspectedTable.hasBLOBColumns();
 
         return rc;
@@ -361,7 +361,7 @@ public abstract class BaseRules implements Rules {
 
     /**
      * Implements the rule for generating an example class. The class should be
-     * generated if the selectByExample or deleteByExample or countByExample
+     * generated if the selectByCriteria or deleteByCriteria or countByCriteria
      * methods are allowed.
      * 
      * @return true if the example class should be generated
@@ -377,49 +377,49 @@ public abstract class BaseRules implements Rules {
             return false;
         }
         
-        boolean rc = tableConfiguration.isSelectByExampleStatementEnabled()
-                || tableConfiguration.isDeleteByExampleStatementEnabled()
-                || tableConfiguration.isCountByExampleStatementEnabled()
-                || tableConfiguration.isUpdateByExampleStatementEnabled();
+        boolean rc = tableConfiguration.isSelectByCriteriaStatementEnabled()
+                || tableConfiguration.isDeleteByCriteriaStatementEnabled()
+                || tableConfiguration.isCountByCriteriaStatementEnabled()
+                || tableConfiguration.isUpdateByCriteriaStatementEnabled();
 
         return rc;
     }
 
     /* (non-Javadoc)
-     * @see org.mybatis.generator.internal.rules.Rules#generateCountByExample()
+     * @see org.mybatis.generator.internal.rules.Rules#generateCountByCriteria()
      */
-    public boolean generateCountByExample() {
+    public boolean generateCountByCriteria() {
         if (isModelOnly) {
             return false;
         }
         
-        boolean rc = tableConfiguration.isCountByExampleStatementEnabled();
+        boolean rc = tableConfiguration.isCountByCriteriaStatementEnabled();
 
         return rc;
     }
 
     /* (non-Javadoc)
-     * @see org.mybatis.generator.internal.rules.Rules#generateUpdateByExampleSelective()
+     * @see org.mybatis.generator.internal.rules.Rules#generateUpdateByCriteriaSelective()
      */
-    public boolean generateUpdateByExampleSelective() {
+    public boolean generateUpdateByCriteriaSelective() {
         if (isModelOnly) {
             return false;
         }
         
-        boolean rc = tableConfiguration.isUpdateByExampleStatementEnabled();
+        boolean rc = tableConfiguration.isUpdateByCriteriaStatementEnabled();
 
         return rc;
     }
 
     /* (non-Javadoc)
-     * @see org.mybatis.generator.internal.rules.Rules#generateUpdateByExampleWithoutBLOBs()
+     * @see org.mybatis.generator.internal.rules.Rules#generateUpdateByCriteriaWithoutBLOBs()
      */
-    public boolean generateUpdateByExampleWithoutBLOBs() {
+    public boolean generateUpdateByCriteriaWithoutBLOBs() {
         if (isModelOnly) {
             return false;
         }
         
-        boolean rc = tableConfiguration.isUpdateByExampleStatementEnabled()
+        boolean rc = tableConfiguration.isUpdateByCriteriaStatementEnabled()
                 && (introspectedTable.hasPrimaryKeyColumns() || introspectedTable
                         .hasBaseColumns());
 
@@ -427,14 +427,14 @@ public abstract class BaseRules implements Rules {
     }
 
     /* (non-Javadoc)
-     * @see org.mybatis.generator.internal.rules.Rules#generateUpdateByExampleWithBLOBs()
+     * @see org.mybatis.generator.internal.rules.Rules#generateUpdateByCriteriaWithBLOBs()
      */
-    public boolean generateUpdateByExampleWithBLOBs() {
+    public boolean generateUpdateByCriteriaWithBLOBs() {
         if (isModelOnly) {
             return false;
         }
         
-        boolean rc = tableConfiguration.isUpdateByExampleStatementEnabled()
+        boolean rc = tableConfiguration.isUpdateByCriteriaStatementEnabled()
                 && introspectedTable.hasBLOBColumns();
 
         return rc;
@@ -456,7 +456,7 @@ public abstract class BaseRules implements Rules {
         }
         
         return generateSelectByPrimaryKey()
-                || generateSelectByExampleWithoutBLOBs();
+                || generateSelectByCriteriaWithoutBLOBs();
     }
 
     /* (non-Javadoc)
@@ -468,7 +468,7 @@ public abstract class BaseRules implements Rules {
         }
         
         return introspectedTable.hasBLOBColumns()
-                && (tableConfiguration.isSelectByExampleStatementEnabled() || tableConfiguration
+                && (tableConfiguration.isSelectByCriteriaStatementEnabled() || tableConfiguration
                         .isSelectByPrimaryKeyStatementEnabled());
     }
 

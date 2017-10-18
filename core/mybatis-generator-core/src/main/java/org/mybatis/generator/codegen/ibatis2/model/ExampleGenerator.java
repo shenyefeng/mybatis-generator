@@ -84,9 +84,9 @@ public class ExampleGenerator extends AbstractJavaGenerator {
         // example methods are enabled - because the parameter
         // class for update by example methods will subclass this class
         Rules rules = introspectedTable.getRules();
-        if (rules.generateUpdateByExampleSelective()
-                || rules.generateUpdateByExampleWithBLOBs()
-                || rules.generateUpdateByExampleWithoutBLOBs()) {
+        if (rules.generateUpdateByCriteriaSelective()
+                || rules.generateUpdateByCriteriaWithBLOBs()
+                || rules.generateUpdateByCriteriaWithoutBLOBs()) {
             method = new Method();
             method.setVisibility(JavaVisibility.PROTECTED);
             method.setConstructor(true);

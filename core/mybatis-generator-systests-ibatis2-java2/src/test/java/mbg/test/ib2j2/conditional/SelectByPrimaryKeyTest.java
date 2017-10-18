@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import mbg.test.ib2j2.generated.conditional.model.Pkblobs;
 import mbg.test.ib2j2.generated.conditional.model.Pkfields;
 import mbg.test.ib2j2.generated.conditional.model.PkfieldsKey;
 import mbg.test.ib2j2.generated.conditional.model.Pkfieldsblobs;
-import mbg.test.ib2j2.generated.conditional.model.PkfieldsblobsExample;
+import mbg.test.ib2j2.generated.conditional.model.PkfieldsblobsCriteria;
 import mbg.test.ib2j2.generated.conditional.model.PkfieldsblobsKey;
 
 public class SelectByPrimaryKeyTest extends AbstractConditionalJava2Test {
@@ -111,8 +111,8 @@ public class SelectByPrimaryKeyTest extends AbstractConditionalJava2Test {
             record.setBlob1(TestUtilities.generateRandomBlob());
             dao.insert(record);
     
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
-            List answer = dao.selectByExampleWithoutBLOBs(example);
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
+            List answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(2, answer.size());
     
             PkfieldsblobsKey key = new PkfieldsblobsKey();

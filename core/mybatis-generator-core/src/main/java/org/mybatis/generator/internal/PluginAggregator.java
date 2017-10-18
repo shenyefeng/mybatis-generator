@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -96,12 +96,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean sqlMapCountByExampleElementGenerated(XmlElement element,
+    public boolean sqlMapCountByCriteriaElementGenerated(XmlElement element,
             IntrospectedTable table) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.sqlMapCountByExampleElementGenerated(element, table)) {
+            if (!plugin.sqlMapCountByCriteriaElementGenerated(element, table)) {
                 rc = false;
                 break;
             }
@@ -110,12 +110,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean sqlMapDeleteByExampleElementGenerated(XmlElement element,
+    public boolean sqlMapDeleteByCriteriaElementGenerated(XmlElement element,
             IntrospectedTable table) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.sqlMapDeleteByExampleElementGenerated(element, table)) {
+            if (!plugin.sqlMapDeleteByCriteriaElementGenerated(element, table)) {
                 rc = false;
                 break;
             }
@@ -253,12 +253,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(
+    public boolean sqlMapSelectByCriteriaWithoutBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.sqlMapSelectByExampleWithoutBLOBsElementGenerated(
+            if (!plugin.sqlMapSelectByCriteriaWithoutBLOBsElementGenerated(
                     element, introspectedTable)) {
                 rc = false;
                 break;
@@ -268,12 +268,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean sqlMapSelectByExampleWithBLOBsElementGenerated(
+    public boolean sqlMapSelectByCriteriaWithBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.sqlMapSelectByExampleWithBLOBsElementGenerated(element,
+            if (!plugin.sqlMapSelectByCriteriaWithBLOBsElementGenerated(element,
                     introspectedTable)) {
                 rc = false;
                 break;
@@ -312,12 +312,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean sqlMapUpdateByExampleSelectiveElementGenerated(
+    public boolean sqlMapUpdateByCriteriaSelectiveElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.sqlMapUpdateByExampleSelectiveElementGenerated(element,
+            if (!plugin.sqlMapUpdateByCriteriaSelectiveElementGenerated(element,
                     introspectedTable)) {
                 rc = false;
                 break;
@@ -327,12 +327,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean sqlMapUpdateByExampleWithBLOBsElementGenerated(
+    public boolean sqlMapUpdateByCriteriaWithBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.sqlMapUpdateByExampleWithBLOBsElementGenerated(element,
+            if (!plugin.sqlMapUpdateByCriteriaWithBLOBsElementGenerated(element,
                     introspectedTable)) {
                 rc = false;
                 break;
@@ -342,12 +342,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean sqlMapUpdateByExampleWithoutBLOBsElementGenerated(
+    public boolean sqlMapUpdateByCriteriaWithoutBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.sqlMapUpdateByExampleWithoutBLOBsElementGenerated(
+            if (!plugin.sqlMapUpdateByCriteriaWithoutBLOBsElementGenerated(
                     element, introspectedTable)) {
                 rc = false;
                 break;
@@ -402,12 +402,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientCountByExampleMethodGenerated(Method method,
+    public boolean clientCountByCriteriaMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientCountByExampleMethodGenerated(method, interfaze,
+            if (!plugin.clientCountByCriteriaMethodGenerated(method, interfaze,
                     introspectedTable)) {
                 rc = false;
                 break;
@@ -417,12 +417,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientCountByExampleMethodGenerated(Method method,
+    public boolean clientCountByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientCountByExampleMethodGenerated(method, topLevelClass,
+            if (!plugin.clientCountByCriteriaMethodGenerated(method, topLevelClass,
                     introspectedTable)) {
                 rc = false;
                 break;
@@ -432,12 +432,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientDeleteByExampleMethodGenerated(Method method,
+    public boolean clientDeleteByCriteriaMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientDeleteByExampleMethodGenerated(method, interfaze,
+            if (!plugin.clientDeleteByCriteriaMethodGenerated(method, interfaze,
                     introspectedTable)) {
                 rc = false;
                 break;
@@ -447,12 +447,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientDeleteByExampleMethodGenerated(Method method,
+    public boolean clientDeleteByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientDeleteByExampleMethodGenerated(method,
+            if (!plugin.clientDeleteByCriteriaMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -567,12 +567,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientSelectByExampleWithBLOBsMethodGenerated(Method method,
+    public boolean clientSelectByCriteriaWithBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientSelectByExampleWithBLOBsMethodGenerated(method,
+            if (!plugin.clientSelectByCriteriaWithBLOBsMethodGenerated(method,
                     interfaze, introspectedTable)) {
                 rc = false;
                 break;
@@ -582,12 +582,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientSelectByExampleWithBLOBsMethodGenerated(Method method,
+    public boolean clientSelectByCriteriaWithBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientSelectByExampleWithBLOBsMethodGenerated(method,
+            if (!plugin.clientSelectByCriteriaWithBLOBsMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -597,12 +597,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientSelectByExampleWithoutBLOBsMethodGenerated(Method method,
+    public boolean clientSelectByCriteriaWithoutBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientSelectByExampleWithoutBLOBsMethodGenerated(method,
+            if (!plugin.clientSelectByCriteriaWithoutBLOBsMethodGenerated(method,
                     interfaze, introspectedTable)) {
                 rc = false;
                 break;
@@ -612,12 +612,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientSelectByExampleWithoutBLOBsMethodGenerated(Method method,
+    public boolean clientSelectByCriteriaWithoutBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientSelectByExampleWithoutBLOBsMethodGenerated(method,
+            if (!plugin.clientSelectByCriteriaWithoutBLOBsMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -657,12 +657,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientUpdateByExampleSelectiveMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaSelectiveMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientUpdateByExampleSelectiveMethodGenerated(method,
+            if (!plugin.clientUpdateByCriteriaSelectiveMethodGenerated(method,
                     interfaze, introspectedTable)) {
                 rc = false;
                 break;
@@ -672,12 +672,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientUpdateByExampleSelectiveMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaSelectiveMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientUpdateByExampleSelectiveMethodGenerated(method,
+            if (!plugin.clientUpdateByCriteriaSelectiveMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -687,12 +687,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientUpdateByExampleWithBLOBsMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaWithBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientUpdateByExampleWithBLOBsMethodGenerated(method,
+            if (!plugin.clientUpdateByCriteriaWithBLOBsMethodGenerated(method,
                     interfaze, introspectedTable)) {
                 rc = false;
                 break;
@@ -702,12 +702,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientUpdateByExampleWithBLOBsMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaWithBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientUpdateByExampleWithBLOBsMethodGenerated(method,
+            if (!plugin.clientUpdateByCriteriaWithBLOBsMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -717,12 +717,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientUpdateByExampleWithoutBLOBsMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaWithoutBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientUpdateByExampleWithoutBLOBsMethodGenerated(method,
+            if (!plugin.clientUpdateByCriteriaWithoutBLOBsMethodGenerated(method,
                     interfaze, introspectedTable)) {
                 rc = false;
                 break;
@@ -732,12 +732,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean clientUpdateByExampleWithoutBLOBsMethodGenerated(Method method,
+    public boolean clientUpdateByCriteriaWithoutBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.clientUpdateByExampleWithoutBLOBsMethodGenerated(method,
+            if (!plugin.clientUpdateByCriteriaWithoutBLOBsMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -1038,12 +1038,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean providerCountByExampleMethodGenerated(Method method,
+    public boolean providerCountByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.providerCountByExampleMethodGenerated(method,
+            if (!plugin.providerCountByCriteriaMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -1053,12 +1053,12 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean providerDeleteByExampleMethodGenerated(Method method,
+    public boolean providerDeleteByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.providerDeleteByExampleMethodGenerated(method,
+            if (!plugin.providerDeleteByCriteriaMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -1083,13 +1083,13 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean providerSelectByExampleWithBLOBsMethodGenerated(
+    public boolean providerSelectByCriteriaWithBLOBsMethodGenerated(
             Method method, TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.providerSelectByExampleWithBLOBsMethodGenerated(method,
+            if (!plugin.providerSelectByCriteriaWithBLOBsMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -1099,13 +1099,13 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean providerSelectByExampleWithoutBLOBsMethodGenerated(
+    public boolean providerSelectByCriteriaWithoutBLOBsMethodGenerated(
             Method method, TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.providerSelectByExampleWithoutBLOBsMethodGenerated(method,
+            if (!plugin.providerSelectByCriteriaWithoutBLOBsMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -1115,13 +1115,13 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean providerUpdateByExampleSelectiveMethodGenerated(
+    public boolean providerUpdateByCriteriaSelectiveMethodGenerated(
             Method method, TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.providerUpdateByExampleSelectiveMethodGenerated(method,
+            if (!plugin.providerUpdateByCriteriaSelectiveMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -1131,13 +1131,13 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean providerUpdateByExampleWithBLOBsMethodGenerated(
+    public boolean providerUpdateByCriteriaWithBLOBsMethodGenerated(
             Method method, TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.providerUpdateByExampleWithBLOBsMethodGenerated(method,
+            if (!plugin.providerUpdateByCriteriaWithBLOBsMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;
@@ -1147,13 +1147,13 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
-    public boolean providerUpdateByExampleWithoutBLOBsMethodGenerated(
+    public boolean providerUpdateByCriteriaWithoutBLOBsMethodGenerated(
             Method method, TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         boolean rc = true;
 
         for (Plugin plugin : plugins) {
-            if (!plugin.providerUpdateByExampleWithoutBLOBsMethodGenerated(method,
+            if (!plugin.providerUpdateByCriteriaWithoutBLOBsMethodGenerated(method,
                     topLevelClass, introspectedTable)) {
                 rc = false;
                 break;

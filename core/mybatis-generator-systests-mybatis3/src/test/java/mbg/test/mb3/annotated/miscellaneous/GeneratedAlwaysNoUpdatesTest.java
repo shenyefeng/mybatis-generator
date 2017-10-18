@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ public class GeneratedAlwaysNoUpdatesTest extends AbstractAnnotatedMiscellaneous
             int rows = mapper.insert(gaTest);
             assertEquals(1, rows);
             
-            List<Generatedalwaystestnoupdates> returnedRecords = mapper.selectByExample(null);
+            List<Generatedalwaystestnoupdates> returnedRecords = mapper.selectByCriteria(null);
             assertEquals(1, returnedRecords.size());
             
             Generatedalwaystestnoupdates returnedRecord = returnedRecords.get(0);
@@ -67,7 +67,7 @@ public class GeneratedAlwaysNoUpdatesTest extends AbstractAnnotatedMiscellaneous
             int rows = mapper.insertSelective(gaTest);
             assertEquals(1, rows);
             
-            List<Generatedalwaystestnoupdates> returnedRecords = mapper.selectByExample(null);
+            List<Generatedalwaystestnoupdates> returnedRecords = mapper.selectByCriteria(null);
             assertEquals(1, returnedRecords.size());
             
             Generatedalwaystestnoupdates returnedRecord = returnedRecords.get(0);

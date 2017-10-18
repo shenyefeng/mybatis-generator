@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -26,20 +26,20 @@ import org.mybatis.generator.codegen.XmlConstants;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.AbstractXmlElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.BaseColumnListElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.BlobColumnListElementGenerator;
-import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.CountByExampleElementGenerator;
-import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.DeleteByExampleElementGenerator;
+import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.CountByCriteriaElementGenerator;
+import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.DeleteByCriteriaElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.DeleteByPrimaryKeyElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.ExampleWhereClauseElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.InsertElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.InsertSelectiveElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.ResultMapWithBLOBsElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.ResultMapWithoutBLOBsElementGenerator;
-import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.SelectByExampleWithBLOBsElementGenerator;
-import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.SelectByExampleWithoutBLOBsElementGenerator;
+import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.SelectByCriteriaWithBLOBsElementGenerator;
+import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.SelectByCriteriaWithoutBLOBsElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.SelectByPrimaryKeyElementGenerator;
-import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.UpdateByExampleSelectiveElementGenerator;
-import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.UpdateByExampleWithBLOBsElementGenerator;
-import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.UpdateByExampleWithoutBLOBsElementGenerator;
+import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.UpdateByCriteriaSelectiveElementGenerator;
+import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.UpdateByCriteriaWithBLOBsElementGenerator;
+import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.UpdateByCriteriaWithoutBLOBsElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.UpdateByPrimaryKeySelectiveElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.UpdateByPrimaryKeyWithBLOBsElementGenerator;
 import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.UpdateByPrimaryKeyWithoutBLOBsElementGenerator;
@@ -70,17 +70,17 @@ public class SqlMapGenerator extends AbstractXmlGenerator {
         addExampleWhereClauseElement(answer);
         addBaseColumnListElement(answer);
         addBlobColumnListElement(answer);
-        addSelectByExampleWithBLOBsElement(answer);
-        addSelectByExampleWithoutBLOBsElement(answer);
+        addSelectByCriteriaWithBLOBsElement(answer);
+        addSelectByCriteriaWithoutBLOBsElement(answer);
         addSelectByPrimaryKeyElement(answer);
         addDeleteByPrimaryKeyElement(answer);
-        addDeleteByExampleElement(answer);
+        addDeleteByCriteriaElement(answer);
         addInsertElement(answer);
         addInsertSelectiveElement(answer);
-        addCountByExampleElement(answer);
-        addUpdateByExampleSelectiveElement(answer);
-        addUpdateByExampleWithBLOBsElement(answer);
-        addUpdateByExampleWithoutBLOBsElement(answer);
+        addCountByCriteriaElement(answer);
+        addUpdateByCriteriaSelectiveElement(answer);
+        addUpdateByCriteriaWithBLOBsElement(answer);
+        addUpdateByCriteriaWithoutBLOBsElement(answer);
         addUpdateByPrimaryKeySelectiveElement(answer);
         addUpdateByPrimaryKeyWithBLOBsElement(answer);
         addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
@@ -123,17 +123,17 @@ public class SqlMapGenerator extends AbstractXmlGenerator {
         }
     }
 
-    protected void addSelectByExampleWithoutBLOBsElement(
+    protected void addSelectByCriteriaWithoutBLOBsElement(
             XmlElement parentElement) {
-        if (introspectedTable.getRules().generateSelectByExampleWithoutBLOBs()) {
-            AbstractXmlElementGenerator elementGenerator = new SelectByExampleWithoutBLOBsElementGenerator();
+        if (introspectedTable.getRules().generateSelectByCriteriaWithoutBLOBs()) {
+            AbstractXmlElementGenerator elementGenerator = new SelectByCriteriaWithoutBLOBsElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
 
-    protected void addSelectByExampleWithBLOBsElement(XmlElement parentElement) {
-        if (introspectedTable.getRules().generateSelectByExampleWithBLOBs()) {
-            AbstractXmlElementGenerator elementGenerator = new SelectByExampleWithBLOBsElementGenerator();
+    protected void addSelectByCriteriaWithBLOBsElement(XmlElement parentElement) {
+        if (introspectedTable.getRules().generateSelectByCriteriaWithBLOBs()) {
+            AbstractXmlElementGenerator elementGenerator = new SelectByCriteriaWithBLOBsElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
@@ -145,9 +145,9 @@ public class SqlMapGenerator extends AbstractXmlGenerator {
         }
     }
 
-    protected void addDeleteByExampleElement(XmlElement parentElement) {
-        if (introspectedTable.getRules().generateDeleteByExample()) {
-            AbstractXmlElementGenerator elementGenerator = new DeleteByExampleElementGenerator();
+    protected void addDeleteByCriteriaElement(XmlElement parentElement) {
+        if (introspectedTable.getRules().generateDeleteByCriteria()) {
+            AbstractXmlElementGenerator elementGenerator = new DeleteByCriteriaElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
@@ -173,31 +173,31 @@ public class SqlMapGenerator extends AbstractXmlGenerator {
         }
     }
 
-    protected void addCountByExampleElement(XmlElement parentElement) {
-        if (introspectedTable.getRules().generateCountByExample()) {
-            AbstractXmlElementGenerator elementGenerator = new CountByExampleElementGenerator();
+    protected void addCountByCriteriaElement(XmlElement parentElement) {
+        if (introspectedTable.getRules().generateCountByCriteria()) {
+            AbstractXmlElementGenerator elementGenerator = new CountByCriteriaElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
 
-    protected void addUpdateByExampleSelectiveElement(XmlElement parentElement) {
-        if (introspectedTable.getRules().generateUpdateByExampleSelective()) {
-            AbstractXmlElementGenerator elementGenerator = new UpdateByExampleSelectiveElementGenerator();
+    protected void addUpdateByCriteriaSelectiveElement(XmlElement parentElement) {
+        if (introspectedTable.getRules().generateUpdateByCriteriaSelective()) {
+            AbstractXmlElementGenerator elementGenerator = new UpdateByCriteriaSelectiveElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
 
-    protected void addUpdateByExampleWithBLOBsElement(XmlElement parentElement) {
-        if (introspectedTable.getRules().generateUpdateByExampleWithBLOBs()) {
-            AbstractXmlElementGenerator elementGenerator = new UpdateByExampleWithBLOBsElementGenerator();
+    protected void addUpdateByCriteriaWithBLOBsElement(XmlElement parentElement) {
+        if (introspectedTable.getRules().generateUpdateByCriteriaWithBLOBs()) {
+            AbstractXmlElementGenerator elementGenerator = new UpdateByCriteriaWithBLOBsElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
 
-    protected void addUpdateByExampleWithoutBLOBsElement(
+    protected void addUpdateByCriteriaWithoutBLOBsElement(
             XmlElement parentElement) {
-        if (introspectedTable.getRules().generateUpdateByExampleWithoutBLOBs()) {
-            AbstractXmlElementGenerator elementGenerator = new UpdateByExampleWithoutBLOBsElementGenerator();
+        if (introspectedTable.getRules().generateUpdateByCriteriaWithoutBLOBs()) {
+            AbstractXmlElementGenerator elementGenerator = new UpdateByCriteriaWithoutBLOBsElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }

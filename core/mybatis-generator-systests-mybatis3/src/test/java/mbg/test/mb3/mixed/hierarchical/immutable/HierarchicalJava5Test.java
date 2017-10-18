@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -36,21 +36,21 @@ import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Mapper.PkfieldsMapper
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Mapper.PkfieldsblobsMapper;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Mapper.PkonlyMapper;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.Fieldsblobs;
-import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.FieldsblobsExample;
+import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.FieldsblobsCriteria;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.FieldsblobsWithBLOBs;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.Fieldsonly;
-import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.FieldsonlyExample;
-import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkblobsExample;
+import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.FieldsonlyCriteria;
+import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkblobsCriteria;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkblobsKey;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkblobsWithBLOBs;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.Pkfields;
-import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkfieldsExample;
+import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkfieldsCriteria;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkfieldsKey;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.Pkfieldsblobs;
-import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkfieldsblobsExample;
+import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkfieldsblobsCriteria;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkfieldsblobsKey;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkfieldsblobsWithBLOBs;
-import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkonlyExample;
+import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkonlyCriteria;
 import mbg.test.mb3.generated.mixed.hierarchical.Immutable.Model.PkonlyKey;
 
 import org.apache.ibatis.session.SqlSession;
@@ -71,10 +71,10 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             Fieldsonly record = new Fieldsonly(5, 11.22, 33.44);
             mapper.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria().andIntegerfieldEqualTo(5);
 
-            List<Fieldsonly> answer = mapper.selectByExample(example);
+            List<Fieldsonly> answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
 
             Fieldsonly returnedRecord = answer.get(0);
@@ -89,7 +89,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testFieldsOnlySelectByExample() {
+    public void testFieldsOnlySelectByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -103,14 +103,14 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new Fieldsonly(9, 88.99, 100.111);
             mapper.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria().andIntegerfieldGreaterThan(5);
 
-            List<Fieldsonly> answer = mapper.selectByExample(example);
+            List<Fieldsonly> answer = mapper.selectByCriteria(example);
             assertEquals(2, answer.size());
 
-            example = new FieldsonlyExample();
-            answer = mapper.selectByExample(example);
+            example = new FieldsonlyCriteria();
+            answer = mapper.selectByCriteria(example);
             assertEquals(3, answer.size());
         } finally {
             sqlSession.close();
@@ -118,7 +118,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testFieldsOnlySelectByExampleNoCriteria() {
+    public void testFieldsOnlySelectByCriteriaNoCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -132,10 +132,10 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new Fieldsonly(9, 88.99, 100.111);
             mapper.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria();
 
-            List<Fieldsonly> answer = mapper.selectByExample(example);
+            List<Fieldsonly> answer = mapper.selectByCriteria(example);
             assertEquals(3, answer.size());
         } finally {
             sqlSession.close();
@@ -143,7 +143,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testFieldsOnlyDeleteByExample() {
+    public void testFieldsOnlyDeleteByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -157,14 +157,14 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new Fieldsonly(9, 88.99, 100.111);
             mapper.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria().andIntegerfieldGreaterThan(5);
 
-            int rows = mapper.deleteByExample(example);
+            int rows = mapper.deleteByCriteria(example);
             assertEquals(2, rows);
 
-            example = new FieldsonlyExample();
-            List<Fieldsonly> answer = mapper.selectByExample(example);
+            example = new FieldsonlyCriteria();
+            List<Fieldsonly> answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
         } finally {
             sqlSession.close();
@@ -172,7 +172,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testFieldsOnlyCountByExample() {
+    public void testFieldsOnlyCountByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -186,13 +186,13 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new Fieldsonly(9, 88.99, 100.111);
             mapper.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria().andIntegerfieldGreaterThan(5);
-            long rows = mapper.countByExample(example);
+            long rows = mapper.countByCriteria(example);
             assertEquals(2, rows);
 
             example.clear();
-            rows = mapper.countByExample(example);
+            rows = mapper.countByCriteria(example);
             assertEquals(3, rows);
         } finally {
             sqlSession.close();
@@ -208,8 +208,8 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             PkonlyKey key = new PkonlyKey(1, 3);
             mapper.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
-            List<PkonlyKey> answer = mapper.selectByExample(example);
+            PkonlyCriteria example = new PkonlyCriteria();
+            List<PkonlyKey> answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
 
             PkonlyKey returnedRecord = answer.get(0);
@@ -232,15 +232,15 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             key = new PkonlyKey(5, 6);
             mapper.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
-            List<PkonlyKey> answer = mapper.selectByExample(example);
+            PkonlyCriteria example = new PkonlyCriteria();
+            List<PkonlyKey> answer = mapper.selectByCriteria(example);
             assertEquals(2, answer.size());
 
             key = new PkonlyKey(5, 6);
             int rows = mapper.deleteByPrimaryKey(key);
             assertEquals(1, rows);
 
-            answer = mapper.selectByExample(example);
+            answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
         } finally {
             sqlSession.close();
@@ -248,7 +248,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKOnlyDeleteByExample() {
+    public void testPKOnlyDeleteByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -262,13 +262,13 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             key = new PkonlyKey(7, 8);
             mapper.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
+            PkonlyCriteria example = new PkonlyCriteria();
             example.createCriteria().andIdGreaterThan(4);
-            int rows = mapper.deleteByExample(example);
+            int rows = mapper.deleteByCriteria(example);
             assertEquals(2, rows);
 
-            example = new PkonlyExample();
-            List<PkonlyKey> answer = mapper.selectByExample(example);
+            example = new PkonlyCriteria();
+            List<PkonlyKey> answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
         } finally {
             sqlSession.close();
@@ -276,7 +276,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKOnlySelectByExample() {
+    public void testPKOnlySelectByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -290,9 +290,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             key = new PkonlyKey(7, 8);
             mapper.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
+            PkonlyCriteria example = new PkonlyCriteria();
             example.createCriteria().andIdGreaterThan(4);
-            List<PkonlyKey> answer = mapper.selectByExample(example);
+            List<PkonlyKey> answer = mapper.selectByCriteria(example);
             assertEquals(2, answer.size());
         } finally {
             sqlSession.close();
@@ -300,7 +300,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKOnlySelectByExampleNoCriteria() {
+    public void testPKOnlySelectByCriteriaNoCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -314,9 +314,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             key = new PkonlyKey(7, 8);
             mapper.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
+            PkonlyCriteria example = new PkonlyCriteria();
             example.createCriteria();
-            List<PkonlyKey> answer = mapper.selectByExample(example);
+            List<PkonlyKey> answer = mapper.selectByCriteria(example);
             assertEquals(3, answer.size());
         } finally {
             sqlSession.close();
@@ -324,7 +324,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKOnlyCountByExample() {
+    public void testPKOnlyCountByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -338,13 +338,13 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             key = new PkonlyKey(7, 8);
             mapper.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
+            PkonlyCriteria example = new PkonlyCriteria();
             example.createCriteria().andIdGreaterThan(4);
-            long rows = mapper.countByExample(example);
+            long rows = mapper.countByCriteria(example);
             assertEquals(2, rows);
 
             example.clear();
-            rows  = mapper.countByExample(example);
+            rows  = mapper.countByCriteria(example);
             assertEquals(3, rows);
         } finally {
             sqlSession.close();
@@ -512,8 +512,8 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             int rows = mapper.deleteByPrimaryKey(key);
             assertEquals(1, rows);
 
-            PkfieldsExample example = new PkfieldsExample();
-            List<Pkfields> answer = mapper.selectByExample(example);
+            PkfieldsCriteria example = new PkfieldsCriteria();
+            List<Pkfields> answer = mapper.selectByCriteria(example);
             assertEquals(0, answer.size());
         } finally {
             sqlSession.close();
@@ -521,7 +521,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsDeleteByExample() {
+    public void testPKFieldsDeleteByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -541,17 +541,17 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
 
             mapper.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
-            List<Pkfields> answer = mapper.selectByExample(example);
+            PkfieldsCriteria example = new PkfieldsCriteria();
+            List<Pkfields> answer = mapper.selectByCriteria(example);
             assertEquals(2, answer.size());
 
-            example = new PkfieldsExample();
+            example = new PkfieldsCriteria();
             example.createCriteria().andLastnameLike("J%");
-            int rows = mapper.deleteByExample(example);
+            int rows = mapper.deleteByCriteria(example);
             assertEquals(1, rows);
 
-            example = new PkfieldsExample();
-            answer = mapper.selectByExample(example);
+            example = new PkfieldsCriteria();
+            answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
         } finally {
             sqlSession.close();
@@ -594,7 +594,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsSelectByExampleLike() {
+    public void testPKFieldsSelectByCriteriaLike() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -641,10 +641,10 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record.setId2(3);
             mapper.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andFirstnameLike("B%");
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = mapper.selectByExample(example);
+            List<Pkfields> answer = mapper.selectByCriteria(example);
             assertEquals(3, answer.size());
             Pkfields returnedRecord = answer.get(0);
             assertEquals(2, returnedRecord.getId1().intValue());
@@ -661,7 +661,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsSelectByExampleNotLike() {
+    public void testPKFieldsSelectByCriteriaNotLike() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -708,10 +708,10 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record.setId2(3);
             mapper.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andFirstnameNotLike("B%");
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = mapper.selectByExample(example);
+            List<Pkfields> answer = mapper.selectByCriteria(example);
             assertEquals(3, answer.size());
             Pkfields returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -728,7 +728,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsSelectByExampleComplexLike() {
+    public void testPKFieldsSelectByCriteriaComplexLike() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -775,12 +775,12 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record.setId2(3);
             mapper.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andFirstnameLike("B%").andId2EqualTo(3);
             example.or(example.createCriteria().andFirstnameLike("Wi%"));
 
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = mapper.selectByExample(example);
+            List<Pkfields> answer = mapper.selectByCriteria(example);
             assertEquals(2, answer.size());
             Pkfields returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -794,7 +794,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsSelectByExampleIn() {
+    public void testPKFieldsSelectByCriteriaIn() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -845,11 +845,11 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             ids.add(1);
             ids.add(3);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andId2In(ids);
 
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = mapper.selectByExample(example);
+            List<Pkfields> answer = mapper.selectByCriteria(example);
             assertEquals(4, answer.size());
             Pkfields returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -869,7 +869,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsSelectByExampleBetween() {
+    public void testPKFieldsSelectByCriteriaBetween() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -916,11 +916,11 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record.setId2(3);
             mapper.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andId2Between(1, 3);
 
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = mapper.selectByExample(example);
+            List<Pkfields> answer = mapper.selectByCriteria(example);
             assertEquals(6, answer.size());
         } finally {
             sqlSession.close();
@@ -928,7 +928,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsSelectByExampleNoCriteria() {
+    public void testPKFieldsSelectByCriteriaNoCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -975,11 +975,11 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record.setId2(3);
             mapper.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria();
 
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = mapper.selectByExample(example);
+            List<Pkfields> answer = mapper.selectByCriteria(example);
             assertEquals(6, answer.size());
         } finally {
             sqlSession.close();
@@ -987,7 +987,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsSelectByExampleEscapedFields() {
+    public void testPKFieldsSelectByCriteriaEscapedFields() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1044,12 +1044,12 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             values.add(11);
             values.add(22);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andWierdFieldLessThan(40).andWierdFieldIn(
                     values);
 
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = mapper.selectByExample(example);
+            List<Pkfields> answer = mapper.selectByCriteria(example);
             assertEquals(2, answer.size());
         } finally {
             sqlSession.close();
@@ -1057,7 +1057,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsCountByExample() {
+    public void testPKFieldsCountByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1077,13 +1077,13 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
 
             mapper.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andLastnameLike("J%");
-            long rows = mapper.countByExample(example);
+            long rows = mapper.countByCriteria(example);
             assertEquals(1, rows);
 
             example.clear();
-            rows = mapper.countByExample(example);
+            rows = mapper.countByCriteria(example);
             assertEquals(2, rows);
         } finally {
             sqlSession.close();
@@ -1100,9 +1100,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
                     "Long String 1");
             mapper.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
+            PkblobsCriteria example = new PkblobsCriteria();
             List<PkblobsWithBLOBs> answer = mapper
-                    .selectByExampleWithBLOBs(example);
+                    .selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
 
             PkblobsWithBLOBs returnedRecord = answer.get(0);
@@ -1185,16 +1185,16 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
                     "Long String 1");
             mapper.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
-            List<PkblobsKey> answer = mapper.selectByExample(example);
+            PkblobsCriteria example = new PkblobsCriteria();
+            List<PkblobsKey> answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
 
             PkblobsKey key = new PkblobsKey(3);
             int rows = mapper.deleteByPrimaryKey(key);
             assertEquals(1, rows);
 
-            example = new PkblobsExample();
-            answer = mapper.selectByExample(example);
+            example = new PkblobsCriteria();
+            answer = mapper.selectByCriteria(example);
             assertEquals(0, answer.size());
         } finally {
             sqlSession.close();
@@ -1202,7 +1202,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKBlobsDeleteByExample() {
+    public void testPKBlobsDeleteByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1215,17 +1215,17 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
                     "Long String 2");
             mapper.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
-            List<PkblobsKey> answer = mapper.selectByExample(example);
+            PkblobsCriteria example = new PkblobsCriteria();
+            List<PkblobsKey> answer = mapper.selectByCriteria(example);
             assertEquals(2, answer.size());
 
-            example = new PkblobsExample();
+            example = new PkblobsCriteria();
             example.createCriteria().andIdLessThan(4);
-            int rows = mapper.deleteByExample(example);
+            int rows = mapper.deleteByCriteria(example);
             assertEquals(1, rows);
 
-            example = new PkblobsExample();
-            answer = mapper.selectByExample(example);
+            example = new PkblobsCriteria();
+            answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
         } finally {
             sqlSession.close();
@@ -1259,7 +1259,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKBlobsSelectByExampleWithoutBlobs() {
+    public void testPKBlobsSelectByCriteriaWithoutBlobs() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1272,9 +1272,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
                     "Long String 2");
             mapper.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
+            PkblobsCriteria example = new PkblobsCriteria();
             example.createCriteria().andIdGreaterThan(4);
-            List<PkblobsKey> answer = mapper.selectByExample(example);
+            List<PkblobsKey> answer = mapper.selectByCriteria(example);
 
             assertEquals(1, answer.size());
 
@@ -1287,7 +1287,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKBlobsSelectByExampleWithoutBlobsNoCriteria() {
+    public void testPKBlobsSelectByCriteriaWithoutBlobsNoCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1300,9 +1300,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
                     "Long String 2");
             mapper.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
+            PkblobsCriteria example = new PkblobsCriteria();
             example.createCriteria();
-            List<PkblobsKey> answer = mapper.selectByExample(example);
+            List<PkblobsKey> answer = mapper.selectByCriteria(example);
 
             assertEquals(2, answer.size());
         } finally {
@@ -1311,7 +1311,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKBlobsSelectByExampleWithBlobs() {
+    public void testPKBlobsSelectByCriteriaWithBlobs() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1324,10 +1324,10 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
                     "Long String 2");
             mapper.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
+            PkblobsCriteria example = new PkblobsCriteria();
             example.createCriteria().andIdGreaterThan(4);
             List<PkblobsWithBLOBs> answer = mapper
-                    .selectByExampleWithBLOBs(example);
+                    .selectByCriteriaWithBLOBs(example);
 
             assertEquals(1, answer.size());
 
@@ -1342,7 +1342,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKBlobsCountByExample() {
+    public void testPKBlobsCountByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1355,13 +1355,13 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
                     "Long String 2");
             mapper.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
+            PkblobsCriteria example = new PkblobsCriteria();
             example.createCriteria().andIdLessThan(4);
-            long rows = mapper.countByExample(example);
+            long rows = mapper.countByCriteria(example);
             assertEquals(1, rows);
 
             example.clear();
-            rows = mapper.countByExample(example);
+            rows = mapper.countByCriteria(example);
             assertEquals(2, rows);
         } finally {
             sqlSession.close();
@@ -1377,9 +1377,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             PkfieldsblobsWithBLOBs record = new PkfieldsblobsWithBLOBs(1, 2, ":Jeff", "Smith", generateRandomBlob());
             mapper.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             List<PkfieldsblobsWithBLOBs> answer = mapper
-                    .selectByExampleWithBLOBs(example);
+                    .selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
 
             PkfieldsblobsWithBLOBs returnedRecord = answer.get(0);
@@ -1487,17 +1487,17 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new PkfieldsblobsWithBLOBs(5, 6, "Scott", "Jones", generateRandomBlob());
             mapper.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             List<Pkfieldsblobs> answer = mapper
-                    .selectByExample(example);
+                    .selectByCriteria(example);
             assertEquals(2, answer.size());
 
             PkfieldsblobsKey key = new PkfieldsblobsKey(5, 6);
             int rows = mapper.deleteByPrimaryKey(key);
             assertEquals(1, rows);
 
-            example = new PkfieldsblobsExample();
-            answer = mapper.selectByExample(example);
+            example = new PkfieldsblobsCriteria();
+            answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
         } finally {
             sqlSession.close();
@@ -1505,7 +1505,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsBlobsDeleteByExample() {
+    public void testPKFieldsBlobsDeleteByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1516,18 +1516,18 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new PkfieldsblobsWithBLOBs(5, 6, "Scott", "Jones", generateRandomBlob());
             mapper.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             List<Pkfieldsblobs> answer = mapper
-                    .selectByExample(example);
+                    .selectByCriteria(example);
             assertEquals(2, answer.size());
 
-            example = new PkfieldsblobsExample();
+            example = new PkfieldsblobsCriteria();
             example.createCriteria().andId1NotEqualTo(3);
-            int rows = mapper.deleteByExample(example);
+            int rows = mapper.deleteByCriteria(example);
             assertEquals(1, rows);
 
-            example = new PkfieldsblobsExample();
-            answer = mapper.selectByExample(example);
+            example = new PkfieldsblobsCriteria();
+            answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
         } finally {
             sqlSession.close();
@@ -1546,9 +1546,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new PkfieldsblobsWithBLOBs(5, 6, "Scott", "Jones", generateRandomBlob());
             mapper.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             List<Pkfieldsblobs> answer = mapper
-                    .selectByExample(example);
+                    .selectByCriteria(example);
             assertEquals(2, answer.size());
 
             PkfieldsblobsKey key = new PkfieldsblobsKey(5, 6);
@@ -1564,7 +1564,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsBlobsSelectByExampleWithoutBlobs() {
+    public void testPKFieldsBlobsSelectByCriteriaWithoutBlobs() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1575,10 +1575,10 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new PkfieldsblobsWithBLOBs(5, 6, "Scott", "Jones", generateRandomBlob());
             mapper.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             example.createCriteria().andId2EqualTo(6);
             List<Pkfieldsblobs> answer = mapper
-                    .selectByExample(example);
+                    .selectByCriteria(example);
             assertEquals(1, answer.size());
 
             Pkfieldsblobs newRecord = answer.get(0);
@@ -1593,7 +1593,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsBlobsSelectByExampleWithBlobs() {
+    public void testPKFieldsBlobsSelectByCriteriaWithBlobs() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1604,10 +1604,10 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new PkfieldsblobsWithBLOBs(5, 6, "Scott", "Jones", generateRandomBlob());
             mapper.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             example.createCriteria().andId2EqualTo(6);
             List<PkfieldsblobsWithBLOBs> answer = mapper
-                    .selectByExampleWithBLOBs(example);
+                    .selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
 
             PkfieldsblobsWithBLOBs newRecord = answer.get(0);
@@ -1622,7 +1622,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsBlobsSelectByExampleWithBlobsNoCriteria() {
+    public void testPKFieldsBlobsSelectByCriteriaWithBlobsNoCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1633,9 +1633,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new PkfieldsblobsWithBLOBs(5, 6, "Scott", "Jones", generateRandomBlob());
             mapper.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             example.createCriteria();
-            List<PkfieldsblobsWithBLOBs> answer = mapper.selectByExampleWithBLOBs(example);
+            List<PkfieldsblobsWithBLOBs> answer = mapper.selectByCriteriaWithBLOBs(example);
             assertEquals(2, answer.size());
         } finally {
             sqlSession.close();
@@ -1643,7 +1643,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testPKFieldsBlobsCountByExample() {
+    public void testPKFieldsBlobsCountByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1654,13 +1654,13 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new PkfieldsblobsWithBLOBs(5, 6, "Scott", "Jones", generateRandomBlob());
             mapper.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             example.createCriteria().andId1NotEqualTo(3);
-            long rows = mapper.countByExample(example);
+            long rows = mapper.countByCriteria(example);
             assertEquals(1, rows);
 
             example.clear();
-            rows = mapper.countByExample(example);
+            rows = mapper.countByCriteria(example);
             assertEquals(2, rows);
         } finally {
             sqlSession.close();
@@ -1676,9 +1676,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             FieldsblobsWithBLOBs record = new FieldsblobsWithBLOBs("Jeff", "Smith", generateRandomBlob(), generateRandomBlob(), null);
             mapper.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
             List<FieldsblobsWithBLOBs> answer = mapper
-                    .selectByExampleWithBLOBs(example);
+                    .selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
 
             FieldsblobsWithBLOBs returnedRecord = answer.get(0);
@@ -1694,7 +1694,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testFieldsBlobsDeleteByExample() {
+    public void testFieldsBlobsDeleteByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1705,17 +1705,17 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new FieldsblobsWithBLOBs("Scott", "Jones", generateRandomBlob(), generateRandomBlob(), null);
             mapper.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
-            List<Fieldsblobs> answer = mapper.selectByExample(example);
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
+            List<Fieldsblobs> answer = mapper.selectByCriteria(example);
             assertEquals(2, answer.size());
 
-            example = new FieldsblobsExample();
+            example = new FieldsblobsCriteria();
             example.createCriteria().andFirstnameLike("S%");
-            int rows = mapper.deleteByExample(example);
+            int rows = mapper.deleteByCriteria(example);
             assertEquals(1, rows);
 
-            example = new FieldsblobsExample();
-            answer = mapper.selectByExample(example);
+            example = new FieldsblobsCriteria();
+            answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
         } finally {
             sqlSession.close();
@@ -1723,7 +1723,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testFieldsBlobsSelectByExampleWithoutBlobs() {
+    public void testFieldsBlobsSelectByCriteriaWithoutBlobs() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1734,9 +1734,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new FieldsblobsWithBLOBs("Scott", "Jones", generateRandomBlob(), generateRandomBlob(), null);
             mapper.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
             example.createCriteria().andFirstnameLike("S%");
-            List<Fieldsblobs> answer = mapper.selectByExample(example);
+            List<Fieldsblobs> answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
 
             Fieldsblobs newRecord = answer.get(0);
@@ -1749,7 +1749,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testFieldsBlobsSelectByExampleWithBlobs() {
+    public void testFieldsBlobsSelectByCriteriaWithBlobs() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1760,10 +1760,10 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new FieldsblobsWithBLOBs("Scott", "Jones", generateRandomBlob(), generateRandomBlob(), null);
             mapper.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
             example.createCriteria().andFirstnameLike("S%");
             List<FieldsblobsWithBLOBs> answer = mapper
-                    .selectByExampleWithBLOBs(example);
+                    .selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
 
             FieldsblobsWithBLOBs newRecord = answer.get(0);
@@ -1777,7 +1777,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testFieldsBlobsSelectByExampleWithBlobsNoCriteria() {
+    public void testFieldsBlobsSelectByCriteriaWithBlobsNoCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1788,9 +1788,9 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new FieldsblobsWithBLOBs("Scott", "Jones", generateRandomBlob(), generateRandomBlob(), null);
             mapper.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
             example.createCriteria();
-            List<FieldsblobsWithBLOBs> answer = mapper.selectByExampleWithBLOBs(example);
+            List<FieldsblobsWithBLOBs> answer = mapper.selectByCriteriaWithBLOBs(example);
             assertEquals(2, answer.size());
         } finally {
             sqlSession.close();
@@ -1798,7 +1798,7 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
     }
 
     @Test
-    public void testFieldsBlobsCountByExample() {
+    public void testFieldsBlobsCountByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -1809,13 +1809,13 @@ public class HierarchicalJava5Test extends AbstractMixedHierarchicalImmutableTes
             record = new FieldsblobsWithBLOBs("Scott", "Jones", generateRandomBlob(), generateRandomBlob(), null);
             mapper.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
             example.createCriteria().andFirstnameLike("S%");
-            long rows = mapper.countByExample(example);
+            long rows = mapper.countByCriteria(example);
             assertEquals(1, rows);
 
             example.clear();
-            rows = mapper.countByExample(example);
+            rows = mapper.countByCriteria(example);
             assertEquals(2, rows);
         } finally {
             sqlSession.close();

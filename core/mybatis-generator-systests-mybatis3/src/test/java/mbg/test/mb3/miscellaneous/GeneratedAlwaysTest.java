@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
             int rows = mapper.insert(gaTest);
             assertEquals(1, rows);
             
-            List<Generatedalwaystest> returnedRecords = mapper.selectByExampleWithBLOBs(null);
+            List<Generatedalwaystest> returnedRecords = mapper.selectByCriteriaWithBLOBs(null);
             assertEquals(1, returnedRecords.size());
             
             Generatedalwaystest returnedRecord = returnedRecords.get(0);
@@ -76,7 +76,7 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
             int rows = mapper.insert(gaTest);
             assertEquals(1, rows);
             
-            List<Generatedalwaystest> returnedRecords = mapper.selectByExample(null);
+            List<Generatedalwaystest> returnedRecords = mapper.selectByCriteria(null);
             assertEquals(1, returnedRecords.size());
             
             Generatedalwaystest returnedRecord = returnedRecords.get(0);
@@ -91,7 +91,7 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testUpdateByExample() {
+    public void testUpdateByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -116,10 +116,10 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
             GeneratedalwaystestCriteria gaCriteria = new GeneratedalwaystestCriteria();
             gaCriteria.or().andIdPlus1EqualTo(2).andIdPlus2EqualTo(3);
             
-            rows = mapper.updateByExample(gaTest, gaCriteria);
+            rows = mapper.updateByCriteria(gaTest, gaCriteria);
             assertEquals(1, rows);
             
-            List<Generatedalwaystest> returnedRecords = mapper.selectByExampleWithBLOBs(gaCriteria);
+            List<Generatedalwaystest> returnedRecords = mapper.selectByCriteriaWithBLOBs(gaCriteria);
             assertEquals(1, returnedRecords.size());
             
             Generatedalwaystest returnedRecord = returnedRecords.get(0);
@@ -135,7 +135,7 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testUpdateByExampleSelective() {
+    public void testUpdateByCriteriaSelective() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -158,10 +158,10 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
             GeneratedalwaystestCriteria gaCriteria = new GeneratedalwaystestCriteria();
             gaCriteria.or().andIdPlus1EqualTo(2).andIdPlus2EqualTo(3);
             
-            rows = mapper.updateByExampleSelective(gaTest, gaCriteria);
+            rows = mapper.updateByCriteriaSelective(gaTest, gaCriteria);
             assertEquals(1, rows);
             
-            List<Generatedalwaystest> returnedRecords = mapper.selectByExampleWithBLOBs(gaCriteria);
+            List<Generatedalwaystest> returnedRecords = mapper.selectByCriteriaWithBLOBs(gaCriteria);
             assertEquals(1, returnedRecords.size());
             
             Generatedalwaystest returnedRecord = returnedRecords.get(0);
@@ -176,7 +176,7 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testUpdateByExampleWithBlobs() {
+    public void testUpdateByCriteriaWithBlobs() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -199,10 +199,10 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
             GeneratedalwaystestCriteria gaCriteria = new GeneratedalwaystestCriteria();
             gaCriteria.or().andIdPlus1EqualTo(2).andIdPlus2EqualTo(3);
 
-            rows = mapper.updateByExampleWithBLOBs(gaTest, gaCriteria);
+            rows = mapper.updateByCriteriaWithBLOBs(gaTest, gaCriteria);
             assertEquals(1, rows);
             
-            List<Generatedalwaystest> returnedRecords = mapper.selectByExampleWithBLOBs(gaCriteria);
+            List<Generatedalwaystest> returnedRecords = mapper.selectByCriteriaWithBLOBs(gaCriteria);
             assertEquals(1, returnedRecords.size());
             
             Generatedalwaystest returnedRecord = returnedRecords.get(0);
@@ -241,7 +241,7 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
             rows = mapper.updateByPrimaryKey(gaTest);
             assertEquals(1, rows);
             
-            List<Generatedalwaystest> returnedRecords = mapper.selectByExampleWithBLOBs(null);
+            List<Generatedalwaystest> returnedRecords = mapper.selectByCriteriaWithBLOBs(null);
             assertEquals(1, returnedRecords.size());
             
             Generatedalwaystest returnedRecord = returnedRecords.get(0);
@@ -279,7 +279,7 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
             rows = mapper.updateByPrimaryKeySelective(gaTest);
             assertEquals(1, rows);
             
-            List<Generatedalwaystest> returnedRecords = mapper.selectByExampleWithBLOBs(null);
+            List<Generatedalwaystest> returnedRecords = mapper.selectByCriteriaWithBLOBs(null);
             assertEquals(1, returnedRecords.size());
             
             Generatedalwaystest returnedRecord = returnedRecords.get(0);
@@ -316,7 +316,7 @@ public class GeneratedAlwaysTest extends AbstractMiscellaneousTest {
             rows = mapper.updateByPrimaryKeyWithBLOBs(gaTest);
             assertEquals(1, rows);
             
-            List<Generatedalwaystest> returnedRecords = mapper.selectByExampleWithBLOBs(null);
+            List<Generatedalwaystest> returnedRecords = mapper.selectByCriteriaWithBLOBs(null);
             assertEquals(1, returnedRecords.size());
             
             Generatedalwaystest returnedRecord = returnedRecords.get(0);

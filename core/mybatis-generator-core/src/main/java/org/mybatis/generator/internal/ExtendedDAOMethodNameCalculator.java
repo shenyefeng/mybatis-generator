@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -96,13 +96,13 @@ public class ExtendedDAOMethodNameCalculator implements DAOMethodNameCalculator 
         return sb.toString();
     }
 
-    public String getDeleteByExampleMethodName(
+    public String getDeleteByCriteriaMethodName(
             IntrospectedTable introspectedTable) {
         StringBuilder sb = new StringBuilder();
         sb.append("delete"); //$NON-NLS-1$
         sb.append(introspectedTable.getFullyQualifiedTable()
                 .getDomainObjectName());
-        sb.append("ByExample"); //$NON-NLS-1$
+        sb.append("ByCriteria"); //$NON-NLS-1$
 
         return sb.toString();
     }
@@ -119,21 +119,21 @@ public class ExtendedDAOMethodNameCalculator implements DAOMethodNameCalculator 
     }
 
     /**
-     * 1. if this will be the only selectByExample, then the result should be
-     * selectByExample. 2. Else the method name should be
-     * selectByExampleWithoutBLOBs
+     * 1. if this will be the only selectByCriteria, then the result should be
+     * selectByCriteria. 2. Else the method name should be
+     * selectByCriteriaWithoutBLOBs
      */
-    public String getSelectByExampleWithoutBLOBsMethodName(
+    public String getSelectByCriteriaWithoutBLOBsMethodName(
             IntrospectedTable introspectedTable) {
         StringBuilder sb = new StringBuilder();
         sb.append("select"); //$NON-NLS-1$
         sb.append(introspectedTable.getFullyQualifiedTable()
                 .getDomainObjectName());
-        sb.append("ByExample"); //$NON-NLS-1$
+        sb.append("ByCriteria"); //$NON-NLS-1$
 
         Rules rules = introspectedTable.getRules();
 
-        if (rules.generateSelectByExampleWithBLOBs()) {
+        if (rules.generateSelectByCriteriaWithBLOBs()) {
             sb.append("WithoutBLOBs"); //$NON-NLS-1$
         }
 
@@ -141,21 +141,21 @@ public class ExtendedDAOMethodNameCalculator implements DAOMethodNameCalculator 
     }
 
     /**
-     * 1. if this will be the only selectByExample, then the result should be
-     * selectByExample. 2. Else the method name should be
-     * selectByExampleWithBLOBs
+     * 1. if this will be the only selectByCriteria, then the result should be
+     * selectByCriteria. 2. Else the method name should be
+     * selectByCriteriaWithBLOBs
      */
-    public String getSelectByExampleWithBLOBsMethodName(
+    public String getSelectByCriteriaWithBLOBsMethodName(
             IntrospectedTable introspectedTable) {
         StringBuilder sb = new StringBuilder();
         sb.append("select"); //$NON-NLS-1$
         sb.append(introspectedTable.getFullyQualifiedTable()
                 .getDomainObjectName());
-        sb.append("ByExample"); //$NON-NLS-1$
+        sb.append("ByCriteria"); //$NON-NLS-1$
 
         Rules rules = introspectedTable.getRules();
 
-        if (rules.generateSelectByExampleWithoutBLOBs()) {
+        if (rules.generateSelectByCriteriaWithoutBLOBs()) {
             sb.append("WithBLOBs"); //$NON-NLS-1$
         }
 
@@ -184,29 +184,29 @@ public class ExtendedDAOMethodNameCalculator implements DAOMethodNameCalculator 
         return sb.toString();
     }
 
-    public String getCountByExampleMethodName(
+    public String getCountByCriteriaMethodName(
             IntrospectedTable introspectedTable) {
         StringBuilder sb = new StringBuilder();
         sb.append("count"); //$NON-NLS-1$
         sb.append(introspectedTable.getFullyQualifiedTable()
                 .getDomainObjectName());
-        sb.append("ByExample"); //$NON-NLS-1$
+        sb.append("ByCriteria"); //$NON-NLS-1$
 
         return sb.toString();
     }
 
-    public String getUpdateByExampleSelectiveMethodName(
+    public String getUpdateByCriteriaSelectiveMethodName(
             IntrospectedTable introspectedTable) {
         StringBuilder sb = new StringBuilder();
         sb.append("update"); //$NON-NLS-1$
         sb.append(introspectedTable.getFullyQualifiedTable()
                 .getDomainObjectName());
-        sb.append("ByExampleSelective"); //$NON-NLS-1$
+        sb.append("ByCriteriaSelective"); //$NON-NLS-1$
 
         return sb.toString();
     }
 
-    public String getUpdateByExampleWithBLOBsMethodName(
+    public String getUpdateByCriteriaWithBLOBsMethodName(
             IntrospectedTable introspectedTable) {
         StringBuilder sb = new StringBuilder();
         sb.append("update"); //$NON-NLS-1$
@@ -215,18 +215,18 @@ public class ExtendedDAOMethodNameCalculator implements DAOMethodNameCalculator 
 
         Rules rules = introspectedTable.getRules();
 
-        if (!rules.generateUpdateByExampleWithoutBLOBs()) {
-            sb.append("ByExample"); //$NON-NLS-1$
+        if (!rules.generateUpdateByCriteriaWithoutBLOBs()) {
+            sb.append("ByCriteria"); //$NON-NLS-1$
         } else if (rules.generateRecordWithBLOBsClass()) {
-            sb.append("ByExample"); //$NON-NLS-1$
+            sb.append("ByCriteria"); //$NON-NLS-1$
         } else {
-            sb.append("ByExampleWithBLOBs"); //$NON-NLS-1$
+            sb.append("ByCriteriaWithBLOBs"); //$NON-NLS-1$
         }
 
         return sb.toString();
     }
 
-    public String getUpdateByExampleWithoutBLOBsMethodName(
+    public String getUpdateByCriteriaWithoutBLOBsMethodName(
             IntrospectedTable introspectedTable) {
         StringBuilder sb = new StringBuilder();
 
@@ -236,12 +236,12 @@ public class ExtendedDAOMethodNameCalculator implements DAOMethodNameCalculator 
 
         Rules rules = introspectedTable.getRules();
 
-        if (!rules.generateUpdateByExampleWithBLOBs()) {
-            sb.append("ByExample"); //$NON-NLS-1$
+        if (!rules.generateUpdateByCriteriaWithBLOBs()) {
+            sb.append("ByCriteria"); //$NON-NLS-1$
         } else if (rules.generateRecordWithBLOBsClass()) {
-            sb.append("ByExample"); //$NON-NLS-1$
+            sb.append("ByCriteria"); //$NON-NLS-1$
         } else {
-            sb.append("ByExampleWithoutBLOBs"); //$NON-NLS-1$
+            sb.append("ByCriteriaWithoutBLOBs"); //$NON-NLS-1$
         }
 
         return sb.toString();

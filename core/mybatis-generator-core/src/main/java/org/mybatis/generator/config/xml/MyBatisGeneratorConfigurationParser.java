@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -246,22 +246,22 @@ public class MyBatisGeneratorConfigurationParser {
         String enableInsert = attributes.getProperty("enableInsert"); //$NON-NLS-1$
         String enableSelectByPrimaryKey = attributes
                 .getProperty("enableSelectByPrimaryKey"); //$NON-NLS-1$
-        String enableSelectByExample = attributes
-                .getProperty("enableSelectByExample"); //$NON-NLS-1$
+        String enableSelectByCriteria = attributes
+                .getProperty("enableSelectByCriteria"); //$NON-NLS-1$
         String enableUpdateByPrimaryKey = attributes
                 .getProperty("enableUpdateByPrimaryKey"); //$NON-NLS-1$
         String enableDeleteByPrimaryKey = attributes
                 .getProperty("enableDeleteByPrimaryKey"); //$NON-NLS-1$
-        String enableDeleteByExample = attributes
-                .getProperty("enableDeleteByExample"); //$NON-NLS-1$
-        String enableCountByExample = attributes
-                .getProperty("enableCountByExample"); //$NON-NLS-1$
-        String enableUpdateByExample = attributes
-                .getProperty("enableUpdateByExample"); //$NON-NLS-1$
+        String enableDeleteByCriteria = attributes
+                .getProperty("enableDeleteByCriteria"); //$NON-NLS-1$
+        String enableCountByCriteria = attributes
+                .getProperty("enableCountByCriteria"); //$NON-NLS-1$
+        String enableUpdateByCriteria = attributes
+                .getProperty("enableUpdateByCriteria"); //$NON-NLS-1$
         String selectByPrimaryKeyQueryId = attributes
                 .getProperty("selectByPrimaryKeyQueryId"); //$NON-NLS-1$
-        String selectByExampleQueryId = attributes
-                .getProperty("selectByExampleQueryId"); //$NON-NLS-1$
+        String selectByCriteriaQueryId = attributes
+                .getProperty("selectByCriteriaQueryId"); //$NON-NLS-1$
         String modelType = attributes.getProperty("modelType"); //$NON-NLS-1$
         String escapeWildcards = attributes.getProperty("escapeWildcards"); //$NON-NLS-1$
         String delimitIdentifiers = attributes
@@ -300,9 +300,9 @@ public class MyBatisGeneratorConfigurationParser {
                     isTrue(enableSelectByPrimaryKey));
         }
 
-        if (stringHasValue(enableSelectByExample)) {
-            tc.setSelectByExampleStatementEnabled(
-                    isTrue(enableSelectByExample));
+        if (stringHasValue(enableSelectByCriteria)) {
+            tc.setSelectByCriteriaStatementEnabled(
+                    isTrue(enableSelectByCriteria));
         }
 
         if (stringHasValue(enableUpdateByPrimaryKey)) {
@@ -315,27 +315,27 @@ public class MyBatisGeneratorConfigurationParser {
                     isTrue(enableDeleteByPrimaryKey));
         }
 
-        if (stringHasValue(enableDeleteByExample)) {
-            tc.setDeleteByExampleStatementEnabled(
-                    isTrue(enableDeleteByExample));
+        if (stringHasValue(enableDeleteByCriteria)) {
+            tc.setDeleteByCriteriaStatementEnabled(
+                    isTrue(enableDeleteByCriteria));
         }
 
-        if (stringHasValue(enableCountByExample)) {
-            tc.setCountByExampleStatementEnabled(
-                    isTrue(enableCountByExample));
+        if (stringHasValue(enableCountByCriteria)) {
+            tc.setCountByCriteriaStatementEnabled(
+                    isTrue(enableCountByCriteria));
         }
 
-        if (stringHasValue(enableUpdateByExample)) {
-            tc.setUpdateByExampleStatementEnabled(
-                    isTrue(enableUpdateByExample));
+        if (stringHasValue(enableUpdateByCriteria)) {
+            tc.setUpdateByCriteriaStatementEnabled(
+                    isTrue(enableUpdateByCriteria));
         }
 
         if (stringHasValue(selectByPrimaryKeyQueryId)) {
             tc.setSelectByPrimaryKeyQueryId(selectByPrimaryKeyQueryId);
         }
 
-        if (stringHasValue(selectByExampleQueryId)) {
-            tc.setSelectByExampleQueryId(selectByExampleQueryId);
+        if (stringHasValue(selectByCriteriaQueryId)) {
+            tc.setSelectByCriteriaQueryId(selectByCriteriaQueryId);
         }
 
         if (stringHasValue(modelType)) {

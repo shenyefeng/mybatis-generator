@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -219,7 +219,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
             assertEquals(1, rows);
 
             MyObjectCriteria example = new MyObjectCriteria();
-            List<MyObject> answer = dao.selectMyObjectByExample(example);
+            List<MyObject> answer = dao.selectMyObjectByCriteria(example);
             assertEquals(0, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -227,7 +227,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectDeleteByExample() {
+    public void testMyObjectDeleteByCriteria() {
         MyObjectDAO dao = getMyObjectDAO();
 
         try {
@@ -251,16 +251,16 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
             dao.insertMyObject(record);
 
             MyObjectCriteria example = new MyObjectCriteria();
-            List<MyObject> answer = dao.selectMyObjectByExample(example);
+            List<MyObject> answer = dao.selectMyObjectByCriteria(example);
             assertEquals(2, answer.size());
 
             example = new MyObjectCriteria();
             example.createCriteria().andLastnameLike("J%");
-            int rows = dao.deleteMyObjectByExample(example);
+            int rows = dao.deleteMyObjectByCriteria(example);
             assertEquals(1, rows);
 
             example = new MyObjectCriteria();
-            answer = dao.selectMyObjectByExample(example);
+            answer = dao.selectMyObjectByCriteria(example);
             assertEquals(1, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -306,7 +306,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleLike() {
+    public void testMyObjectSelectByCriteriaLike() {
         MyObjectDAO dao = getMyObjectDAO();
 
         try {
@@ -369,7 +369,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
             fn.setValue("B%");
             example.createCriteria().andFirstnameLike(fn);
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = dao.selectMyObjectByExample(example);
+            List<MyObject> answer = dao.selectMyObjectByCriteria(example);
             assertEquals(3, answer.size());
             MyObject returnedRecord = answer.get(0);
             assertEquals(2, returnedRecord.getId1().intValue());
@@ -386,7 +386,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleNotLike() {
+    public void testMyObjectSelectByCriteriaNotLike() {
         MyObjectDAO dao = getMyObjectDAO();
 
         try {
@@ -449,7 +449,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
             fn.setValue("B%");
             example.createCriteria().andFirstnameNotLike(fn);
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = dao.selectMyObjectByExample(example);
+            List<MyObject> answer = dao.selectMyObjectByCriteria(example);
             assertEquals(3, answer.size());
             MyObject returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -466,7 +466,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleComplexLike() {
+    public void testMyObjectSelectByCriteriaComplexLike() {
         MyObjectDAO dao = getMyObjectDAO();
 
         try {
@@ -533,7 +533,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
             example.or(example.createCriteria().andFirstnameLike(fn));
 
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = dao.selectMyObjectByExample(example);
+            List<MyObject> answer = dao.selectMyObjectByCriteria(example);
             assertEquals(2, answer.size());
             MyObject returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -547,7 +547,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleIn() {
+    public void testMyObjectSelectByCriteriaIn() {
         MyObjectDAO dao = getMyObjectDAO();
 
         try {
@@ -613,7 +613,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
             example.createCriteria().andId2In(ids);
 
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = dao.selectMyObjectByExample(example);
+            List<MyObject> answer = dao.selectMyObjectByCriteria(example);
             assertEquals(4, answer.size());
             MyObject returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -640,7 +640,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleBetween() {
+    public void testMyObjectSelectByCriteriaBetween() {
         MyObjectDAO dao = getMyObjectDAO();
 
         try {
@@ -702,7 +702,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
             example.createCriteria().andId2Between(1, 3);
 
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = dao.selectMyObjectByExample(example);
+            List<MyObject> answer = dao.selectMyObjectByCriteria(example);
             assertEquals(6, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -710,7 +710,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleTimeEquals() {
+    public void testMyObjectSelectByCriteriaTimeEquals() {
         MyObjectDAO dao = getMyObjectDAO();
 
         try {
@@ -737,7 +737,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
 
             MyObjectCriteria example = new MyObjectCriteria();
             example.createCriteria().andTimefieldEqualTo(myTime);
-            List<MyObject> results = dao.selectMyObjectByExample(example);
+            List<MyObject> results = dao.selectMyObjectByCriteria(example);
             assertEquals(1, results.size());
             MyObject returnedRecord = results.get(0);
 
@@ -767,7 +767,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectUpdateByExampleSelective() {
+    public void testMyObjectUpdateByCriteriaSelective() {
         MyObjectDAO dao = getMyObjectDAO();
 
         try {
@@ -797,10 +797,10 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
             fn = new FirstName();
             fn.setValue("B%");
             example.createCriteria().andFirstnameLike(fn);
-            int rows = dao.updateMyObjectByExampleSelective(newRecord, example);
+            int rows = dao.updateMyObjectByCriteriaSelective(newRecord, example);
             assertEquals(1, rows);
 
-            List<MyObject> answer = dao.selectMyObjectByExample(example);
+            List<MyObject> answer = dao.selectMyObjectByCriteria(example);
             assertEquals(1, answer.size());
             
             MyObject returnedRecord = answer.get(0);
@@ -815,7 +815,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectUpdateByExample() {
+    public void testMyObjectUpdateByCriteria() {
         MyObjectDAO dao = getMyObjectDAO();
 
         try {
@@ -847,10 +847,10 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
             example.createCriteria()
                 .andId1EqualTo(3)
                 .andId2EqualTo(4);
-            int rows = dao.updateMyObjectByExample(newRecord, example);
+            int rows = dao.updateMyObjectByCriteria(newRecord, example);
             assertEquals(1, rows);
 
-            List<MyObject> answer = dao.selectMyObjectByExample(example);
+            List<MyObject> answer = dao.selectMyObjectByCriteria(example);
             assertEquals(1, answer.size());
             
             MyObject returnedRecord = answer.get(0);
@@ -940,7 +940,7 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleLikeInsensitive() {
+    public void testMyObjectSelectByCriteriaLikeInsensitive() {
         MyObjectDAO dao = getMyObjectDAO();
 
         try {
@@ -1001,12 +1001,12 @@ public class MiscellaneousTest extends AbstractMiscellaneousTest {
             MyObjectCriteria example = new MyObjectCriteria();
             example.createCriteria().andLastnameLike("RU%");
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = dao.selectMyObjectByExample(example);
+            List<MyObject> answer = dao.selectMyObjectByCriteria(example);
             assertEquals(0, answer.size());
             
             example.clear();
             example.createCriteria().andLastnameLikeInsensitive("RU%");
-            answer = dao.selectMyObjectByExample(example);
+            answer = dao.selectMyObjectByCriteria(example);
             assertEquals(3, answer.size());
             
             MyObject returnedRecord = answer.get(0);

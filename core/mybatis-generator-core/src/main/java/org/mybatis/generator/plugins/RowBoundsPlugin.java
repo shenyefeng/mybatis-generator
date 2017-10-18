@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 
 /**
- * This plugin will add selectByExample methods that include rowBounds
+ * This plugin will add selectByCriteria methods that include rowBounds
  * parameters to the generated mapper interface.  This plugin is only
  * valid for MyBatis3.
  * 
@@ -55,7 +55,7 @@ public class RowBoundsPlugin extends PluginAdapter {
     }
 
     @Override
-    public boolean clientSelectByExampleWithBLOBsMethodGenerated(Method method,
+    public boolean clientSelectByCriteriaWithBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         if (introspectedTable.getTargetRuntime() == TargetRuntime.MYBATIS3) {
             copyAndAddMethod(method, interfaze);
@@ -64,7 +64,7 @@ public class RowBoundsPlugin extends PluginAdapter {
     }
 
     @Override
-    public boolean clientSelectByExampleWithoutBLOBsMethodGenerated(
+    public boolean clientSelectByCriteriaWithoutBLOBsMethodGenerated(
             Method method, Interface interfaze,
             IntrospectedTable introspectedTable) {
         if (introspectedTable.getTargetRuntime() == TargetRuntime.MYBATIS3) {
@@ -74,7 +74,7 @@ public class RowBoundsPlugin extends PluginAdapter {
     }
 
     @Override
-    public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(
+    public boolean sqlMapSelectByCriteriaWithoutBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         if (introspectedTable.getTargetRuntime() == TargetRuntime.MYBATIS3) {
             copyAndSaveElement(element, introspectedTable.getFullyQualifiedTable());
@@ -83,7 +83,7 @@ public class RowBoundsPlugin extends PluginAdapter {
     }
 
     @Override
-    public boolean sqlMapSelectByExampleWithBLOBsElementGenerated(
+    public boolean sqlMapSelectByCriteriaWithBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         if (introspectedTable.getTargetRuntime() == TargetRuntime.MYBATIS3) {
             copyAndSaveElement(element, introspectedTable.getFullyQualifiedTable());

@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -28,17 +28,17 @@ import mbg.test.ib2j2.generated.conditional.dao.PkfieldsDAO;
 import mbg.test.ib2j2.generated.conditional.dao.PkfieldsblobsDAO;
 import mbg.test.ib2j2.generated.conditional.dao.PkonlyDAO;
 import mbg.test.ib2j2.generated.conditional.model.AwfulTable;
-import mbg.test.ib2j2.generated.conditional.model.FieldsblobsExample;
+import mbg.test.ib2j2.generated.conditional.model.FieldsblobsCriteria;
 import mbg.test.ib2j2.generated.conditional.model.FieldsblobsWithBLOBs;
 import mbg.test.ib2j2.generated.conditional.model.Fieldsonly;
-import mbg.test.ib2j2.generated.conditional.model.FieldsonlyExample;
+import mbg.test.ib2j2.generated.conditional.model.FieldsonlyCriteria;
 import mbg.test.ib2j2.generated.conditional.model.Pkblobs;
-import mbg.test.ib2j2.generated.conditional.model.PkblobsExample;
+import mbg.test.ib2j2.generated.conditional.model.PkblobsCriteria;
 import mbg.test.ib2j2.generated.conditional.model.Pkfields;
 import mbg.test.ib2j2.generated.conditional.model.PkfieldsKey;
 import mbg.test.ib2j2.generated.conditional.model.Pkfieldsblobs;
-import mbg.test.ib2j2.generated.conditional.model.PkfieldsblobsExample;
-import mbg.test.ib2j2.generated.conditional.model.PkonlyExample;
+import mbg.test.ib2j2.generated.conditional.model.PkfieldsblobsCriteria;
+import mbg.test.ib2j2.generated.conditional.model.PkonlyCriteria;
 import mbg.test.ib2j2.generated.conditional.model.PkonlyKey;
 
 public class InsertTest extends AbstractConditionalJava2Test {
@@ -53,10 +53,10 @@ public class InsertTest extends AbstractConditionalJava2Test {
             record.setIntegerfield(new Integer(5));
             dao.insert(record);
     
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria().andIntegerfieldEqualTo(new Integer(5));
     
-            List answer = dao.selectByExample(example);
+            List answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
     
             Fieldsonly returnedRecord = (Fieldsonly) answer.get(0);
@@ -79,8 +79,8 @@ public class InsertTest extends AbstractConditionalJava2Test {
             key.setSeqNum(new Integer(3));
             dao.insert(key);
     
-            PkonlyExample example = new PkonlyExample();
-            List answer = dao.selectByExample(example);
+            PkonlyCriteria example = new PkonlyCriteria();
+            List answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
     
             PkonlyKey returnedRecord = (PkonlyKey) answer.get(0);
@@ -150,8 +150,8 @@ public class InsertTest extends AbstractConditionalJava2Test {
             record.setBlob2(TestUtilities.generateRandomBlob());
             dao.insert(record);
     
-            PkblobsExample example = new PkblobsExample();
-            List answer = dao.selectByExampleWithBLOBs(example);
+            PkblobsCriteria example = new PkblobsCriteria();
+            List answer = dao.selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
     
             Pkblobs returnedRecord = (Pkblobs) answer.get(0);
@@ -177,8 +177,8 @@ public class InsertTest extends AbstractConditionalJava2Test {
             record.setBlob1(TestUtilities.generateRandomBlob());
             dao.insert(record);
     
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
-            List answer = dao.selectByExampleWithBLOBs(example);
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
+            List answer = dao.selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
     
             Pkfieldsblobs returnedRecord = (Pkfieldsblobs) answer.get(0);
@@ -204,8 +204,8 @@ public class InsertTest extends AbstractConditionalJava2Test {
             record.setBlob2(TestUtilities.generateRandomBlob());
             dao.insert(record);
     
-            FieldsblobsExample example = new FieldsblobsExample();
-            List answer = dao.selectByExampleWithBLOBs(example);
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
+            List answer = dao.selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
     
             FieldsblobsWithBLOBs returnedRecord = (FieldsblobsWithBLOBs) answer

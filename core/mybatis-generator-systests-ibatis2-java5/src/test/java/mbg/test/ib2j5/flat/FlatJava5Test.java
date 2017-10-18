@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -40,19 +40,19 @@ import mbg.test.ib2j5.generated.flat.dao.PkfieldsDAO;
 import mbg.test.ib2j5.generated.flat.dao.PkfieldsblobsDAO;
 import mbg.test.ib2j5.generated.flat.dao.PkonlyDAO;
 import mbg.test.ib2j5.generated.flat.model.AwfulTable;
-import mbg.test.ib2j5.generated.flat.model.AwfulTableExample;
+import mbg.test.ib2j5.generated.flat.model.AwfulTableCriteria;
 import mbg.test.ib2j5.generated.flat.model.Fieldsblobs;
-import mbg.test.ib2j5.generated.flat.model.FieldsblobsExample;
+import mbg.test.ib2j5.generated.flat.model.FieldsblobsCriteria;
 import mbg.test.ib2j5.generated.flat.model.Fieldsonly;
-import mbg.test.ib2j5.generated.flat.model.FieldsonlyExample;
+import mbg.test.ib2j5.generated.flat.model.FieldsonlyCriteria;
 import mbg.test.ib2j5.generated.flat.model.Pkblobs;
-import mbg.test.ib2j5.generated.flat.model.PkblobsExample;
+import mbg.test.ib2j5.generated.flat.model.PkblobsCriteria;
 import mbg.test.ib2j5.generated.flat.model.Pkfields;
-import mbg.test.ib2j5.generated.flat.model.PkfieldsExample;
+import mbg.test.ib2j5.generated.flat.model.PkfieldsCriteria;
 import mbg.test.ib2j5.generated.flat.model.Pkfieldsblobs;
-import mbg.test.ib2j5.generated.flat.model.PkfieldsblobsExample;
+import mbg.test.ib2j5.generated.flat.model.PkfieldsblobsCriteria;
 import mbg.test.ib2j5.generated.flat.model.Pkonly;
-import mbg.test.ib2j5.generated.flat.model.PkonlyExample;
+import mbg.test.ib2j5.generated.flat.model.PkonlyCriteria;
 
 import org.junit.Test;
 
@@ -73,10 +73,10 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setIntegerfield(5);
             dao.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria().andIntegerfieldEqualTo(5);
 
-            List<Fieldsonly> answer = dao.selectByExample(example);
+            List<Fieldsonly> answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
 
             Fieldsonly returnedRecord = answer.get(0);
@@ -91,7 +91,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testFieldsOnlySelectByExample() {
+    public void testFieldsOnlySelectByCriteria() {
         FieldsonlyDAO dao = getFieldsonlyDAO();
 
         try {
@@ -113,14 +113,14 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setIntegerfield(9);
             dao.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria().andIntegerfieldGreaterThan(5);
 
-            List<Fieldsonly> answer = dao.selectByExample(example);
+            List<Fieldsonly> answer = dao.selectByCriteria(example);
             assertEquals(2, answer.size());
 
-            example = new FieldsonlyExample();
-            answer = dao.selectByExample(example);
+            example = new FieldsonlyCriteria();
+            answer = dao.selectByCriteria(example);
             assertEquals(3, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -128,7 +128,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testFieldsOnlySelectByExampleDistinct() {
+    public void testFieldsOnlySelectByCriteriaDistinct() {
         FieldsonlyDAO dao = getFieldsonlyDAO();
 
         try {
@@ -152,15 +152,15 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setIntegerfield(9);
             dao.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria().andIntegerfieldEqualTo(5);
             example.setDistinct(true);
 
-            List<Fieldsonly> answer = dao.selectByExample(example);
+            List<Fieldsonly> answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
 
             example.clear();
-            answer = dao.selectByExample(example);
+            answer = dao.selectByCriteria(example);
             assertEquals(5, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -168,7 +168,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
     
     @Test
-    public void testFieldsOnlySelectByExampleNoCriteria() {
+    public void testFieldsOnlySelectByCriteriaNoCriteria() {
         FieldsonlyDAO dao = getFieldsonlyDAO();
 
         try {
@@ -190,13 +190,13 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setIntegerfield(9);
             dao.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria();
 
-            List<Fieldsonly> answer = dao.selectByExample(example);
+            List<Fieldsonly> answer = dao.selectByCriteria(example);
             assertEquals(3, answer.size());
 
-            answer = dao.selectByExample(null);
+            answer = dao.selectByCriteria(null);
             assertEquals(3, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -204,7 +204,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testFieldsOnlyDeleteByExample() {
+    public void testFieldsOnlyDeleteByCriteria() {
         FieldsonlyDAO dao = getFieldsonlyDAO();
 
         try {
@@ -226,14 +226,14 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setIntegerfield(9);
             dao.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria().andIntegerfieldGreaterThan(5);
 
-            int rows = dao.deleteByExample(example);
+            int rows = dao.deleteByCriteria(example);
             assertEquals(2, rows);
 
-            example = new FieldsonlyExample();
-            List<Fieldsonly> answer = dao.selectByExample(example);
+            example = new FieldsonlyCriteria();
+            List<Fieldsonly> answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -241,7 +241,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testFieldsOnlyCountByExample() {
+    public void testFieldsOnlyCountByCriteria() {
         FieldsonlyDAO dao = getFieldsonlyDAO();
 
         try {
@@ -263,13 +263,13 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setIntegerfield(9);
             dao.insert(record);
 
-            FieldsonlyExample example = new FieldsonlyExample();
+            FieldsonlyCriteria example = new FieldsonlyCriteria();
             example.createCriteria().andIntegerfieldGreaterThan(5);
-            long rows = dao.countByExample(example);
+            long rows = dao.countByCriteria(example);
             assertEquals(2, rows);
 
             example.clear();
-            rows = dao.countByExample(example);
+            rows = dao.countByCriteria(example);
             assertEquals(3, rows);
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -286,8 +286,8 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             key.setSeqNum(3);
             dao.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
-            List<Pkonly> answer = dao.selectByExample(example);
+            PkonlyCriteria example = new PkonlyCriteria();
+            List<Pkonly> answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
 
             Pkonly returnedRecord = answer.get(0);
@@ -313,14 +313,14 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             key.setSeqNum(6);
             dao.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
-            List<Pkonly> answer = dao.selectByExample(example);
+            PkonlyCriteria example = new PkonlyCriteria();
+            List<Pkonly> answer = dao.selectByCriteria(example);
             assertEquals(2, answer.size());
 
             int rows = dao.deleteByPrimaryKey(5, 6);
             assertEquals(1, rows);
 
-            answer = dao.selectByExample(example);
+            answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -328,7 +328,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKOnlyDeleteByExample() {
+    public void testPKOnlyDeleteByCriteria() {
         PkonlyDAO dao = getPkonlyDAO();
 
         try {
@@ -347,13 +347,13 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             key.setSeqNum(8);
             dao.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
+            PkonlyCriteria example = new PkonlyCriteria();
             example.createCriteria().andIdGreaterThan(4);
-            int rows = dao.deleteByExample(example);
+            int rows = dao.deleteByCriteria(example);
             assertEquals(2, rows);
 
-            example = new PkonlyExample();
-            List<Pkonly> answer = dao.selectByExample(example);
+            example = new PkonlyCriteria();
+            List<Pkonly> answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -361,7 +361,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKOnlySelectByExample() {
+    public void testPKOnlySelectByCriteria() {
         PkonlyDAO dao = getPkonlyDAO();
 
         try {
@@ -380,9 +380,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             key.setSeqNum(8);
             dao.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
+            PkonlyCriteria example = new PkonlyCriteria();
             example.createCriteria().andIdGreaterThan(4);
-            List<Pkonly> answer = dao.selectByExample(example);
+            List<Pkonly> answer = dao.selectByCriteria(example);
             assertEquals(2, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -390,7 +390,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKOnlySelectByExampleNoCriteria() {
+    public void testPKOnlySelectByCriteriaNoCriteria() {
         PkonlyDAO dao = getPkonlyDAO();
 
         try {
@@ -409,9 +409,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             key.setSeqNum(8);
             dao.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
+            PkonlyCriteria example = new PkonlyCriteria();
             example.createCriteria();
-            List<Pkonly> answer = dao.selectByExample(example);
+            List<Pkonly> answer = dao.selectByCriteria(example);
             assertEquals(3, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -419,7 +419,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKOnlyCountByExample() {
+    public void testPKOnlyCountByCriteria() {
         PkonlyDAO dao = getPkonlyDAO();
 
         try {
@@ -438,13 +438,13 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             key.setSeqNum(8);
             dao.insert(key);
 
-            PkonlyExample example = new PkonlyExample();
+            PkonlyCriteria example = new PkonlyCriteria();
             example.createCriteria().andIdGreaterThan(4);
-            long rows = dao.countByExample(example);
+            long rows = dao.countByCriteria(example);
             assertEquals(2, rows);
 
             example.clear();
-            rows = dao.countByExample(example);
+            rows = dao.countByCriteria(example);
             assertEquals(3, rows);
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -594,8 +594,8 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             int rows = dao.deleteByPrimaryKey(2, 1);
             assertEquals(1, rows);
 
-            PkfieldsExample example = new PkfieldsExample();
-            List<Pkfields> answer = dao.selectByExample(example);
+            PkfieldsCriteria example = new PkfieldsCriteria();
+            List<Pkfields> answer = dao.selectByCriteria(example);
             assertEquals(0, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -603,7 +603,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsDeleteByExample() {
+    public void testPKFieldsDeleteByCriteria() {
         PkfieldsDAO dao = getPkfieldsDAO();
 
         try {
@@ -622,17 +622,17 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
 
             dao.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
-            List<Pkfields> answer = dao.selectByExample(example);
+            PkfieldsCriteria example = new PkfieldsCriteria();
+            List<Pkfields> answer = dao.selectByCriteria(example);
             assertEquals(2, answer.size());
 
-            example = new PkfieldsExample();
+            example = new PkfieldsCriteria();
             example.createCriteria().andLastnameLike("J%");
-            int rows = dao.deleteByExample(example);
+            int rows = dao.deleteByCriteria(example);
             assertEquals(1, rows);
 
-            example = new PkfieldsExample();
-            answer = dao.selectByExample(example);
+            example = new PkfieldsCriteria();
+            answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -671,7 +671,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsSelectByExampleLike() {
+    public void testPKFieldsSelectByCriteriaLike() {
         PkfieldsDAO dao = getPkfieldsDAO();
 
         try {
@@ -717,10 +717,10 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setId2(3);
             dao.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andFirstnameLike("B%");
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = dao.selectByExample(example);
+            List<Pkfields> answer = dao.selectByCriteria(example);
             assertEquals(3, answer.size());
             Pkfields returnedRecord = answer.get(0);
             assertEquals(2, returnedRecord.getId1().intValue());
@@ -737,7 +737,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsSelectByExampleNotLike() {
+    public void testPKFieldsSelectByCriteriaNotLike() {
         PkfieldsDAO dao = getPkfieldsDAO();
 
         try {
@@ -783,10 +783,10 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setId2(3);
             dao.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andFirstnameNotLike("B%");
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = dao.selectByExample(example);
+            List<Pkfields> answer = dao.selectByCriteria(example);
             assertEquals(3, answer.size());
             Pkfields returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -803,7 +803,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsSelectByExampleComplexLike() {
+    public void testPKFieldsSelectByCriteriaComplexLike() {
         PkfieldsDAO dao = getPkfieldsDAO();
 
         try {
@@ -849,12 +849,12 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setId2(3);
             dao.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andFirstnameLike("B%").andId2EqualTo(3);
             example.or(example.createCriteria().andFirstnameLike("Wi%"));
 
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = dao.selectByExample(example);
+            List<Pkfields> answer = dao.selectByCriteria(example);
             assertEquals(2, answer.size());
             Pkfields returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -868,7 +868,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsSelectByExampleIn() {
+    public void testPKFieldsSelectByCriteriaIn() {
         PkfieldsDAO dao = getPkfieldsDAO();
 
         try {
@@ -925,11 +925,11 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             List<Boolean> bools = new ArrayList<Boolean>();
             bools.add(Boolean.TRUE);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andId2In(ids).andStringbooleanIn(bools);
 
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = dao.selectByExample(example);
+            List<Pkfields> answer = dao.selectByCriteria(example);
             assertEquals(4, answer.size());
             Pkfields returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -949,7 +949,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsSelectByExampleBetween() {
+    public void testPKFieldsSelectByCriteriaBetween() {
         PkfieldsDAO dao = getPkfieldsDAO();
 
         try {
@@ -995,11 +995,11 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setId2(3);
             dao.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andId2Between(1, 3);
 
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = dao.selectByExample(example);
+            List<Pkfields> answer = dao.selectByCriteria(example);
             assertEquals(6, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1007,7 +1007,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsSelectByExampleNoCriteria() {
+    public void testPKFieldsSelectByCriteriaNoCriteria() {
         PkfieldsDAO dao = getPkfieldsDAO();
 
         try {
@@ -1053,11 +1053,11 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setId2(3);
             dao.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria();
 
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = dao.selectByExample(example);
+            List<Pkfields> answer = dao.selectByCriteria(example);
             assertEquals(6, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1065,7 +1065,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsSelectByExampleEscapedFields() {
+    public void testPKFieldsSelectByCriteriaEscapedFields() {
         PkfieldsDAO dao = getPkfieldsDAO();
 
         try {
@@ -1121,12 +1121,12 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             values.add(11);
             values.add(22);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andWierdFieldLessThan(40).andWierdFieldIn(
                     values);
 
             example.setOrderByClause("ID1, ID2");
-            List<Pkfields> answer = dao.selectByExample(example);
+            List<Pkfields> answer = dao.selectByCriteria(example);
             assertEquals(2, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1134,7 +1134,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsCountByExample() {
+    public void testPKFieldsCountByCriteria() {
         PkfieldsDAO dao = getPkfieldsDAO();
 
         try {
@@ -1152,13 +1152,13 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setId2(4);
             dao.insert(record);
 
-            PkfieldsExample example = new PkfieldsExample();
+            PkfieldsCriteria example = new PkfieldsCriteria();
             example.createCriteria().andLastnameLike("J%");
-            long rows = dao.countByExample(example);
+            long rows = dao.countByCriteria(example);
             assertEquals(1, rows);
 
             example.clear();
-            rows = dao.countByExample(example);
+            rows = dao.countByCriteria(example);
             assertEquals(2, rows);
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1176,8 +1176,8 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
-            List<Pkblobs> answer = dao.selectByExampleWithBLOBs(example);
+            PkblobsCriteria example = new PkblobsCriteria();
+            List<Pkblobs> answer = dao.selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
 
             Pkblobs returnedRecord = answer.get(0);
@@ -1259,15 +1259,15 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
-            List<Pkblobs> answer = dao.selectByExampleWithoutBLOBs(example);
+            PkblobsCriteria example = new PkblobsCriteria();
+            List<Pkblobs> answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(1, answer.size());
 
             int rows = dao.deleteByPrimaryKey(3);
             assertEquals(1, rows);
 
-            example = new PkblobsExample();
-            answer = dao.selectByExampleWithoutBLOBs(example);
+            example = new PkblobsCriteria();
+            answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(0, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1275,7 +1275,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKBlobsDeleteByExample() {
+    public void testPKBlobsDeleteByCriteria() {
         PkblobsDAO dao = getPkblobsDAO();
 
         try {
@@ -1291,17 +1291,17 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
-            List<Pkblobs> answer = dao.selectByExampleWithoutBLOBs(example);
+            PkblobsCriteria example = new PkblobsCriteria();
+            List<Pkblobs> answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(2, answer.size());
 
-            example = new PkblobsExample();
+            example = new PkblobsCriteria();
             example.createCriteria().andIdLessThan(4);
-            int rows = dao.deleteByExample(example);
+            int rows = dao.deleteByCriteria(example);
             assertEquals(1, rows);
 
-            example = new PkblobsExample();
-            answer = dao.selectByExampleWithoutBLOBs(example);
+            example = new PkblobsCriteria();
+            answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(1, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1336,7 +1336,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKBlobsSelectByExampleWithoutBlobs() {
+    public void testPKBlobsSelectByCriteriaWithoutBlobs() {
         PkblobsDAO dao = getPkblobsDAO();
 
         try {
@@ -1352,9 +1352,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
+            PkblobsCriteria example = new PkblobsCriteria();
             example.createCriteria().andIdGreaterThan(4);
-            List<Pkblobs> answer = dao.selectByExampleWithoutBLOBs(example);
+            List<Pkblobs> answer = dao.selectByCriteriaWithoutBLOBs(example);
 
             assertEquals(1, answer.size());
 
@@ -1368,7 +1368,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKBlobsSelectByExampleWithoutBlobsNoCriteria() {
+    public void testPKBlobsSelectByCriteriaWithoutBlobsNoCriteria() {
         PkblobsDAO dao = getPkblobsDAO();
 
         try {
@@ -1384,9 +1384,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
+            PkblobsCriteria example = new PkblobsCriteria();
             example.createCriteria();
-            List<Pkblobs> answer = dao.selectByExampleWithoutBLOBs(example);
+            List<Pkblobs> answer = dao.selectByCriteriaWithoutBLOBs(example);
 
             assertEquals(2, answer.size());
         } catch (SQLException e) {
@@ -1395,7 +1395,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKBlobsSelectByExampleWithBlobs() {
+    public void testPKBlobsSelectByCriteriaWithBlobs() {
         PkblobsDAO dao = getPkblobsDAO();
 
         try {
@@ -1411,9 +1411,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
+            PkblobsCriteria example = new PkblobsCriteria();
             example.createCriteria().andIdGreaterThan(4);
-            List<Pkblobs> answer = dao.selectByExampleWithBLOBs(example);
+            List<Pkblobs> answer = dao.selectByCriteriaWithBLOBs(example);
 
             assertEquals(1, answer.size());
 
@@ -1427,7 +1427,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKBlobsCountByExample() {
+    public void testPKBlobsCountByCriteria() {
         PkblobsDAO dao = getPkblobsDAO();
 
         try {
@@ -1443,13 +1443,13 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            PkblobsExample example = new PkblobsExample();
+            PkblobsCriteria example = new PkblobsCriteria();
             example.createCriteria().andIdLessThan(4);
-            long rows = dao.countByExample(example);
+            long rows = dao.countByCriteria(example);
             assertEquals(1, rows);
 
             example.clear();
-            rows = dao.countByExample(example);
+            rows = dao.countByCriteria(example);
             assertEquals(2, rows);
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1469,8 +1469,8 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob1(generateRandomBlob());
             dao.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
-            List<Pkfieldsblobs> answer = dao.selectByExampleWithBLOBs(example);
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
+            List<Pkfieldsblobs> answer = dao.selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
 
             Pkfieldsblobs returnedRecord = answer.get(0);
@@ -1608,16 +1608,16 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob1(generateRandomBlob());
             dao.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             List<Pkfieldsblobs> answer = dao
-                    .selectByExampleWithoutBLOBs(example);
+                    .selectByCriteriaWithoutBLOBs(example);
             assertEquals(2, answer.size());
 
             int rows = dao.deleteByPrimaryKey(5, 6);
             assertEquals(1, rows);
 
-            example = new PkfieldsblobsExample();
-            answer = dao.selectByExampleWithoutBLOBs(example);
+            example = new PkfieldsblobsCriteria();
+            answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(1, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1625,7 +1625,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsBlobsDeleteByExample() {
+    public void testPKFieldsBlobsDeleteByCriteria() {
         PkfieldsblobsDAO dao = getPkfieldsblobsDAO();
 
         try {
@@ -1645,18 +1645,18 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob1(generateRandomBlob());
             dao.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             List<Pkfieldsblobs> answer = dao
-                    .selectByExampleWithoutBLOBs(example);
+                    .selectByCriteriaWithoutBLOBs(example);
             assertEquals(2, answer.size());
 
-            example = new PkfieldsblobsExample();
+            example = new PkfieldsblobsCriteria();
             example.createCriteria().andId1NotEqualTo(3);
-            int rows = dao.deleteByExample(example);
+            int rows = dao.deleteByCriteria(example);
             assertEquals(1, rows);
 
-            example = new PkfieldsblobsExample();
-            answer = dao.selectByExampleWithoutBLOBs(example);
+            example = new PkfieldsblobsCriteria();
+            answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(1, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1684,9 +1684,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob1(generateRandomBlob());
             dao.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             List<Pkfieldsblobs> answer = dao
-                    .selectByExampleWithoutBLOBs(example);
+                    .selectByCriteriaWithoutBLOBs(example);
             assertEquals(2, answer.size());
 
             Pkfieldsblobs newRecord = dao.selectByPrimaryKey(5, 6);
@@ -1701,7 +1701,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsBlobsSelectByExampleWithoutBlobs() {
+    public void testPKFieldsBlobsSelectByCriteriaWithoutBlobs() {
         PkfieldsblobsDAO dao = getPkfieldsblobsDAO();
 
         try {
@@ -1721,10 +1721,10 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob1(generateRandomBlob());
             dao.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             example.createCriteria().andId2EqualTo(6);
             List<Pkfieldsblobs> answer = dao
-                    .selectByExampleWithoutBLOBs(example);
+                    .selectByCriteriaWithoutBLOBs(example);
             assertEquals(1, answer.size());
 
             Pkfieldsblobs newRecord = answer.get(0);
@@ -1739,7 +1739,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsBlobsSelectByExampleWithBlobs() {
+    public void testPKFieldsBlobsSelectByCriteriaWithBlobs() {
         PkfieldsblobsDAO dao = getPkfieldsblobsDAO();
 
         try {
@@ -1759,9 +1759,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob1(generateRandomBlob());
             dao.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             example.createCriteria().andId2EqualTo(6);
-            List<Pkfieldsblobs> answer = dao.selectByExampleWithBLOBs(example);
+            List<Pkfieldsblobs> answer = dao.selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
 
             Pkfieldsblobs newRecord = answer.get(0);
@@ -1776,7 +1776,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsBlobsSelectByExampleWithBlobsNoCriteria() {
+    public void testPKFieldsBlobsSelectByCriteriaWithBlobsNoCriteria() {
         PkfieldsblobsDAO dao = getPkfieldsblobsDAO();
 
         try {
@@ -1796,9 +1796,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob1(generateRandomBlob());
             dao.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             example.createCriteria();
-            List<Pkfieldsblobs> answer = dao.selectByExampleWithBLOBs(example);
+            List<Pkfieldsblobs> answer = dao.selectByCriteriaWithBLOBs(example);
             assertEquals(2, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1817,8 +1817,8 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
-            List<Fieldsblobs> answer = dao.selectByExampleWithBLOBs(example);
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
+            List<Fieldsblobs> answer = dao.selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
 
             Fieldsblobs returnedRecord = answer.get(0);
@@ -1834,7 +1834,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testFieldsBlobsDeleteByExample() {
+    public void testFieldsBlobsDeleteByCriteria() {
         FieldsblobsDAO dao = getFieldsblobsDAO();
 
         try {
@@ -1852,17 +1852,17 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
-            List<Fieldsblobs> answer = dao.selectByExampleWithoutBLOBs(example);
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
+            List<Fieldsblobs> answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(2, answer.size());
 
-            example = new FieldsblobsExample();
+            example = new FieldsblobsCriteria();
             example.createCriteria().andFirstnameLike("S%");
-            int rows = dao.deleteByExample(example);
+            int rows = dao.deleteByCriteria(example);
             assertEquals(1, rows);
 
-            example = new FieldsblobsExample();
-            answer = dao.selectByExampleWithoutBLOBs(example);
+            example = new FieldsblobsCriteria();
+            answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(1, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1870,7 +1870,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testFieldsBlobsSelectByExampleWithoutBlobs() {
+    public void testFieldsBlobsSelectByCriteriaWithoutBlobs() {
         FieldsblobsDAO dao = getFieldsblobsDAO();
 
         try {
@@ -1888,9 +1888,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
             example.createCriteria().andFirstnameLike("S%");
-            List<Fieldsblobs> answer = dao.selectByExampleWithoutBLOBs(example);
+            List<Fieldsblobs> answer = dao.selectByCriteriaWithoutBLOBs(example);
             assertEquals(1, answer.size());
 
             Fieldsblobs newRecord = answer.get(0);
@@ -1904,7 +1904,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testFieldsBlobsSelectByExampleWithBlobs() {
+    public void testFieldsBlobsSelectByCriteriaWithBlobs() {
         FieldsblobsDAO dao = getFieldsblobsDAO();
 
         try {
@@ -1922,9 +1922,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
             example.createCriteria().andFirstnameLike("S%");
-            List<Fieldsblobs> answer = dao.selectByExampleWithBLOBs(example);
+            List<Fieldsblobs> answer = dao.selectByCriteriaWithBLOBs(example);
             assertEquals(1, answer.size());
 
             Fieldsblobs newRecord = answer.get(0);
@@ -1938,7 +1938,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testFieldsBlobsSelectByExampleWithBlobsNoCriteria() {
+    public void testFieldsBlobsSelectByCriteriaWithBlobsNoCriteria() {
         FieldsblobsDAO dao = getFieldsblobsDAO();
 
         try {
@@ -1956,9 +1956,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob2(generateRandomBlob());
             dao.insert(record);
 
-            FieldsblobsExample example = new FieldsblobsExample();
+            FieldsblobsCriteria example = new FieldsblobsCriteria();
             example.createCriteria();
-            List<Fieldsblobs> answer = dao.selectByExampleWithBLOBs(example);
+            List<Fieldsblobs> answer = dao.selectByCriteriaWithBLOBs(example);
             assertEquals(2, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -1966,7 +1966,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testPKFieldsBlobsCountByExample() {
+    public void testPKFieldsBlobsCountByCriteria() {
         PkfieldsblobsDAO dao = getPkfieldsblobsDAO();
 
         try {
@@ -1986,13 +1986,13 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setBlob1(generateRandomBlob());
             dao.insert(record);
 
-            PkfieldsblobsExample example = new PkfieldsblobsExample();
+            PkfieldsblobsCriteria example = new PkfieldsblobsCriteria();
             example.createCriteria().andId1NotEqualTo(3);
-            long rows = dao.countByExample(example);
+            long rows = dao.countByCriteria(example);
             assertEquals(1, rows);
 
             example.clear();
-            rows = dao.countByExample(example);
+            rows = dao.countByCriteria(example);
             assertEquals(2, rows);
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -2212,8 +2212,8 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             int rows = dao.deleteByPrimaryKey(generatedCustomerId);
             assertEquals(1, rows);
 
-            AwfulTableExample example = new AwfulTableExample();
-            List<AwfulTable> answer = dao.selectByExample(example);
+            AwfulTableCriteria example = new AwfulTableCriteria();
+            List<AwfulTable> answer = dao.selectByCriteria(example);
             assertEquals(0, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -2221,7 +2221,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testAwfulTableDeleteByExample() {
+    public void testAwfulTableDeleteByCriteria() {
         AwfulTableDAO dao = getAwfulTableDAO();
 
         try {
@@ -2255,17 +2255,17 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
 
             dao.insert(record);
 
-            AwfulTableExample example = new AwfulTableExample();
-            List<AwfulTable> answer = dao.selectByExample(example);
+            AwfulTableCriteria example = new AwfulTableCriteria();
+            List<AwfulTable> answer = dao.selectByCriteria(example);
             assertEquals(2, answer.size());
 
-            example = new AwfulTableExample();
+            example = new AwfulTableCriteria();
             example.createCriteria().andEMailLike("fred@%");
-            int rows = dao.deleteByExample(example);
+            int rows = dao.deleteByCriteria(example);
             assertEquals(1, rows);
 
             example.clear();
-            answer = dao.selectByExample(example);
+            answer = dao.selectByCriteria(example);
             assertEquals(1, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -2332,7 +2332,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testAwfulTableSelectByExampleLike() {
+    public void testAwfulTableSelectByCriteriaLike() {
         AwfulTableDAO dao = getAwfulTableDAO();
 
         try {
@@ -2420,10 +2420,10 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setThirdFirstName("bammbamm3");
             dao.insert(record);
 
-            AwfulTableExample example = new AwfulTableExample();
+            AwfulTableCriteria example = new AwfulTableCriteria();
             example.createCriteria().andFirstFirstNameLike("b%");
             example.setOrderByClause("\"A_CuStOmEr iD\"");
-            List<AwfulTable> answer = dao.selectByExample(example);
+            List<AwfulTable> answer = dao.selectByCriteria(example);
             assertEquals(3, answer.size());
             AwfulTable returnedRecord = answer.get(0);
             assertEquals(1111, returnedRecord.getId1().intValue());
@@ -2440,7 +2440,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testAwfulTableSelectByExampleNotLike() {
+    public void testAwfulTableSelectByCriteriaNotLike() {
         AwfulTableDAO dao = getAwfulTableDAO();
 
         try {
@@ -2528,10 +2528,10 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setThirdFirstName("bammbamm3");
             dao.insert(record);
 
-            AwfulTableExample example = new AwfulTableExample();
+            AwfulTableCriteria example = new AwfulTableCriteria();
             example.createCriteria().andFirstFirstNameNotLike("b%");
             example.setOrderByClause("\"A_CuStOmEr iD\"");
-            List<AwfulTable> answer = dao.selectByExample(example);
+            List<AwfulTable> answer = dao.selectByCriteria(example);
             assertEquals(3, answer.size());
             AwfulTable returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -2548,7 +2548,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
     
     @Test
-    public void testAwfulTableSelectByExampleComplexLike() {
+    public void testAwfulTableSelectByCriteriaComplexLike() {
         AwfulTableDAO dao = getAwfulTableDAO();
 
         try {
@@ -2636,11 +2636,11 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setThirdFirstName("bammbamm3");
             dao.insert(record);
 
-            AwfulTableExample example = new AwfulTableExample();
+            AwfulTableCriteria example = new AwfulTableCriteria();
             example.createCriteria().andFirstFirstNameLike("b%").andId2EqualTo(222222);
             example.or(example.createCriteria().andFirstFirstNameLike("wi%"));
             example.setOrderByClause("\"A_CuStOmEr iD\"");
-            List<AwfulTable> answer = dao.selectByExample(example);
+            List<AwfulTable> answer = dao.selectByCriteria(example);
             assertEquals(2, answer.size());
             AwfulTable returnedRecord = answer.get(0);
             assertEquals(11, returnedRecord.getId1().intValue());
@@ -2654,7 +2654,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testAwfulTableSelectByExampleIn() {
+    public void testAwfulTableSelectByCriteriaIn() {
         AwfulTableDAO dao = getAwfulTableDAO();
 
         try {
@@ -2746,10 +2746,10 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             ids.add(1);
             ids.add(11);
 
-            AwfulTableExample example = new AwfulTableExample();
+            AwfulTableCriteria example = new AwfulTableCriteria();
             example.createCriteria().andId1In(ids);
             example.setOrderByClause("\"A_CuStOmEr iD\"");
-            List<AwfulTable> answer = dao.selectByExample(example);
+            List<AwfulTable> answer = dao.selectByCriteria(example);
             
             assertEquals(2, answer.size());
             AwfulTable returnedRecord = answer.get(0);
@@ -2764,7 +2764,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testAwfulTableSelectByExampleBetween() {
+    public void testAwfulTableSelectByCriteriaBetween() {
         AwfulTableDAO dao = getAwfulTableDAO();
 
         try {
@@ -2852,9 +2852,9 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setThirdFirstName("bammbamm3");
             dao.insert(record);
 
-            AwfulTableExample example = new AwfulTableExample();
+            AwfulTableCriteria example = new AwfulTableCriteria();
             example.createCriteria().andId1Between(1, 1000);
-            List<AwfulTable> answer = dao.selectByExample(example);
+            List<AwfulTable> answer = dao.selectByCriteria(example);
             assertEquals(3, answer.size());
         } catch (SQLException e) {
             fail(e.getMessage());
@@ -2862,7 +2862,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testAwfulTableSelectByExampleNoCriteria() {
+    public void testAwfulTableSelectByCriteriaNoCriteria() {
         AwfulTableDAO dao = getAwfulTableDAO();
 
         try {
@@ -2950,11 +2950,11 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
             record.setThirdFirstName("bammbamm3");
             dao.insert(record);
 
-            AwfulTableExample example = new AwfulTableExample();
+            AwfulTableCriteria example = new AwfulTableCriteria();
             example.createCriteria();
             example.setOrderByClause("\"A_CuStOmEr iD\" desc");
             
-            List<AwfulTable> answer = dao.selectByExample(example);
+            List<AwfulTable> answer = dao.selectByCriteria(example);
             assertEquals(6, answer.size());
             AwfulTable returnedRecord = answer.get(0);
             assertEquals(111111, returnedRecord.getId1().intValue());
@@ -2974,7 +2974,7 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
     }
 
     @Test
-    public void testAwfulTableCountByExample() {
+    public void testAwfulTableCountByCriteria() {
         AwfulTableDAO dao = getAwfulTableDAO();
 
         try {
@@ -3008,13 +3008,13 @@ public class FlatJava5Test extends AbstractFlatJava5Test {
 
             dao.insert(record);
 
-            AwfulTableExample example = new AwfulTableExample();
+            AwfulTableCriteria example = new AwfulTableCriteria();
             example.createCriteria().andEMailLike("fred@%");
-            long rows = dao.countByExample(example);
+            long rows = dao.countByCriteria(example);
             assertEquals(1, rows);
 
             example.clear();
-            rows = dao.countByExample(example);
+            rows = dao.countByCriteria(example);
             assertEquals(2, rows);
         } catch (SQLException e) {
             fail(e.getMessage());

@@ -250,8 +250,8 @@ public abstract class IntrospectedTable {
      *
      * @return the select by example query id
      */
-    public String getSelectByExampleQueryId() {
-        return tableConfiguration.getSelectByExampleQueryId();
+    public String getSelectByCriteriaQueryId() {
+        return tableConfiguration.getSelectByCriteriaQueryId();
     }
 
     /**
@@ -786,18 +786,18 @@ public abstract class IntrospectedTable {
         setSqlMapFullyQualifiedRuntimeTableName(calculateSqlMapFullyQualifiedRuntimeTableName());
         setSqlMapAliasedFullyQualifiedRuntimeTableName(calculateSqlMapAliasedFullyQualifiedRuntimeTableName());
 
-        setCountByExampleStatementId("countByCriteria"); //$NON-NLS-1$
-        setDeleteByExampleStatementId("deleteByCriteria"); //$NON-NLS-1$
+        setCountByCriteriaStatementId("countByCriteria"); //$NON-NLS-1$
+        setDeleteByCriteriaStatementId("deleteByCriteria"); //$NON-NLS-1$
         setDeleteByPrimaryKeyStatementId("deleteByPrimaryKey"); //$NON-NLS-1$
         setInsertStatementId("insert"); //$NON-NLS-1$
         setInsertSelectiveStatementId("insertSelective"); //$NON-NLS-1$
         setSelectAllStatementId("selectAll"); //$NON-NLS-1$
-        setSelectByExampleStatementId("selectByCriteria"); //$NON-NLS-1$
-        setSelectByExampleWithBLOBsStatementId("selectByCriteriaWithBLOBs"); //$NON-NLS-1$
+        setSelectByCriteriaStatementId("selectByCriteria"); //$NON-NLS-1$
+        setSelectByCriteriaWithBLOBsStatementId("selectByCriteriaWithBLOBs"); //$NON-NLS-1$
         setSelectByPrimaryKeyStatementId("selectByPrimaryKey"); //$NON-NLS-1$
-        setUpdateByExampleStatementId("updateByCriteria"); //$NON-NLS-1$
-        setUpdateByExampleSelectiveStatementId("updateByCriteriaSelective"); //$NON-NLS-1$
-        setUpdateByExampleWithBLOBsStatementId("updateByCriteriaWithBLOBs"); //$NON-NLS-1$
+        setUpdateByCriteriaStatementId("updateByCriteria"); //$NON-NLS-1$
+        setUpdateByCriteriaSelectiveStatementId("updateByCriteriaSelective"); //$NON-NLS-1$
+        setUpdateByCriteriaWithBLOBsStatementId("updateByCriteriaWithBLOBs"); //$NON-NLS-1$
         setUpdateByPrimaryKeyStatementId("updateByPrimaryKey"); //$NON-NLS-1$
         setUpdateByPrimaryKeySelectiveStatementId("updateByPrimaryKeySelective"); //$NON-NLS-1$
         setUpdateByPrimaryKeyWithBLOBsStatementId("updateByPrimaryKeyWithBLOBs"); //$NON-NLS-1$
@@ -806,7 +806,7 @@ public abstract class IntrospectedTable {
         setExampleWhereClauseId("Criteria_Where_Clause"); //$NON-NLS-1$
         setBaseColumnListId("Base_Column_List"); //$NON-NLS-1$
         setBlobColumnListId("Blob_Column_List"); //$NON-NLS-1$
-        setMyBatis3UpdateByExampleWhereClauseId("Update_By_Criteria_Where_Clause"); //$NON-NLS-1$
+        setMyBatis3UpdateByCriteriaWhereClauseId("Update_By_Criteria_Where_Clause"); //$NON-NLS-1$
     }
 
     /**
@@ -846,7 +846,7 @@ public abstract class IntrospectedTable {
      * @param s
      *            the new my batis3 update by example where clause id
      */
-    public void setMyBatis3UpdateByExampleWhereClauseId(String s) {
+    public void setMyBatis3UpdateByCriteriaWhereClauseId(String s) {
         internalAttributes
                 .put(
                         InternalAttribute.ATTR_MYBATIS3_UPDATE_BY_EXAMPLE_WHERE_CLAUSE_ID,
@@ -917,7 +917,7 @@ public abstract class IntrospectedTable {
      * @param s
      *            the new update by example with blo bs statement id
      */
-    public void setUpdateByExampleWithBLOBsStatementId(String s) {
+    public void setUpdateByCriteriaWithBLOBsStatementId(String s) {
         internalAttributes
                 .put(
                         InternalAttribute.ATTR_UPDATE_BY_EXAMPLE_WITH_BLOBS_STATEMENT_ID,
@@ -930,7 +930,7 @@ public abstract class IntrospectedTable {
      * @param s
      *            the new update by example selective statement id
      */
-    public void setUpdateByExampleSelectiveStatementId(String s) {
+    public void setUpdateByCriteriaSelectiveStatementId(String s) {
         internalAttributes
                 .put(
                         InternalAttribute.ATTR_UPDATE_BY_EXAMPLE_SELECTIVE_STATEMENT_ID,
@@ -943,7 +943,7 @@ public abstract class IntrospectedTable {
      * @param s
      *            the new update by example statement id
      */
-    public void setUpdateByExampleStatementId(String s) {
+    public void setUpdateByCriteriaStatementId(String s) {
         internalAttributes.put(
                 InternalAttribute.ATTR_UPDATE_BY_EXAMPLE_STATEMENT_ID, s);
     }
@@ -965,7 +965,7 @@ public abstract class IntrospectedTable {
      * @param s
      *            the new select by example with blo bs statement id
      */
-    public void setSelectByExampleWithBLOBsStatementId(String s) {
+    public void setSelectByCriteriaWithBLOBsStatementId(String s) {
         internalAttributes
                 .put(
                         InternalAttribute.ATTR_SELECT_BY_EXAMPLE_WITH_BLOBS_STATEMENT_ID,
@@ -989,7 +989,7 @@ public abstract class IntrospectedTable {
      * @param s
      *            the new select by example statement id
      */
-    public void setSelectByExampleStatementId(String s) {
+    public void setSelectByCriteriaStatementId(String s) {
         internalAttributes.put(
                 InternalAttribute.ATTR_SELECT_BY_EXAMPLE_STATEMENT_ID, s);
     }
@@ -1032,7 +1032,7 @@ public abstract class IntrospectedTable {
      * @param s
      *            the new delete by example statement id
      */
-    public void setDeleteByExampleStatementId(String s) {
+    public void setDeleteByCriteriaStatementId(String s) {
         internalAttributes.put(
                 InternalAttribute.ATTR_DELETE_BY_EXAMPLE_STATEMENT_ID, s);
     }
@@ -1043,7 +1043,7 @@ public abstract class IntrospectedTable {
      * @param s
      *            the new count by example statement id
      */
-    public void setCountByExampleStatementId(String s) {
+    public void setCountByCriteriaStatementId(String s) {
         internalAttributes.put(
                 InternalAttribute.ATTR_COUNT_BY_EXAMPLE_STATEMENT_ID, s);
     }
@@ -1083,7 +1083,7 @@ public abstract class IntrospectedTable {
      *
      * @return the my batis3 update by example where clause id
      */
-    public String getMyBatis3UpdateByExampleWhereClauseId() {
+    public String getMyBatis3UpdateByCriteriaWhereClauseId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_MYBATIS3_UPDATE_BY_EXAMPLE_WHERE_CLAUSE_ID);
     }
@@ -1143,7 +1143,7 @@ public abstract class IntrospectedTable {
      *
      * @return the update by example with blo bs statement id
      */
-    public String getUpdateByExampleWithBLOBsStatementId() {
+    public String getUpdateByCriteriaWithBLOBsStatementId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_UPDATE_BY_EXAMPLE_WITH_BLOBS_STATEMENT_ID);
     }
@@ -1153,7 +1153,7 @@ public abstract class IntrospectedTable {
      *
      * @return the update by example selective statement id
      */
-    public String getUpdateByExampleSelectiveStatementId() {
+    public String getUpdateByCriteriaSelectiveStatementId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_UPDATE_BY_EXAMPLE_SELECTIVE_STATEMENT_ID);
     }
@@ -1163,7 +1163,7 @@ public abstract class IntrospectedTable {
      *
      * @return the update by example statement id
      */
-    public String getUpdateByExampleStatementId() {
+    public String getUpdateByCriteriaStatementId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_UPDATE_BY_EXAMPLE_STATEMENT_ID);
     }
@@ -1183,7 +1183,7 @@ public abstract class IntrospectedTable {
      *
      * @return the select by example with blo bs statement id
      */
-    public String getSelectByExampleWithBLOBsStatementId() {
+    public String getSelectByCriteriaWithBLOBsStatementId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_SELECT_BY_EXAMPLE_WITH_BLOBS_STATEMENT_ID);
     }
@@ -1203,7 +1203,7 @@ public abstract class IntrospectedTable {
      *
      * @return the select by example statement id
      */
-    public String getSelectByExampleStatementId() {
+    public String getSelectByCriteriaStatementId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_SELECT_BY_EXAMPLE_STATEMENT_ID);
     }
@@ -1243,7 +1243,7 @@ public abstract class IntrospectedTable {
      *
      * @return the delete by example statement id
      */
-    public String getDeleteByExampleStatementId() {
+    public String getDeleteByCriteriaStatementId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_DELETE_BY_EXAMPLE_STATEMENT_ID);
     }
@@ -1253,7 +1253,7 @@ public abstract class IntrospectedTable {
      *
      * @return the count by example statement id
      */
-    public String getCountByExampleStatementId() {
+    public String getCountByCriteriaStatementId() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_COUNT_BY_EXAMPLE_STATEMENT_ID);
     }

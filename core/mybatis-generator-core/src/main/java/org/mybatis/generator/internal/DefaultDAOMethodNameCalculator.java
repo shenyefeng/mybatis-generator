@@ -76,7 +76,7 @@ public class DefaultDAOMethodNameCalculator implements DAOMethodNameCalculator {
         }
     }
 
-    public String getDeleteByExampleMethodName(
+    public String getDeleteByCriteriaMethodName(
             IntrospectedTable introspectedTable) {
         return "deleteByCriteria"; //$NON-NLS-1$
     }
@@ -91,11 +91,11 @@ public class DefaultDAOMethodNameCalculator implements DAOMethodNameCalculator {
      * selectByCriteria. 2. Else the method name should be
      * selectByCriteriaWithoutBLOBs
      */
-    public String getSelectByExampleWithoutBLOBsMethodName(
+    public String getSelectByCriteriaWithoutBLOBsMethodName(
             IntrospectedTable introspectedTable) {
         Rules rules = introspectedTable.getRules();
 
-        if (!rules.generateSelectByExampleWithBLOBs()) {
+        if (!rules.generateSelectByCriteriaWithBLOBs()) {
             return "selectByCriteria"; //$NON-NLS-1$
         } else {
             return "selectByCriteriaWithoutBLOBs"; //$NON-NLS-1$
@@ -107,11 +107,11 @@ public class DefaultDAOMethodNameCalculator implements DAOMethodNameCalculator {
      * selectByCriteria. 2. Else the method name should be
      * selectByCriteriaWithBLOBs
      */
-    public String getSelectByExampleWithBLOBsMethodName(
+    public String getSelectByCriteriaWithBLOBsMethodName(
             IntrospectedTable introspectedTable) {
         Rules rules = introspectedTable.getRules();
 
-        if (!rules.generateSelectByExampleWithoutBLOBs()) {
+        if (!rules.generateSelectByCriteriaWithoutBLOBs()) {
             return "selectByCriteria"; //$NON-NLS-1$
         } else {
             return "selectByCriteriaWithBLOBs"; //$NON-NLS-1$
@@ -128,21 +128,21 @@ public class DefaultDAOMethodNameCalculator implements DAOMethodNameCalculator {
         return "updateByPrimaryKeySelective"; //$NON-NLS-1$
     }
 
-    public String getCountByExampleMethodName(
+    public String getCountByCriteriaMethodName(
             IntrospectedTable introspectedTable) {
         return "countByCriteria"; //$NON-NLS-1$
     }
 
-    public String getUpdateByExampleSelectiveMethodName(
+    public String getUpdateByCriteriaSelectiveMethodName(
             IntrospectedTable introspectedTable) {
         return "updateByCriteriaSelective"; //$NON-NLS-1$
     }
 
-    public String getUpdateByExampleWithBLOBsMethodName(
+    public String getUpdateByCriteriaWithBLOBsMethodName(
             IntrospectedTable introspectedTable) {
         Rules rules = introspectedTable.getRules();
 
-        if (!rules.generateUpdateByExampleWithoutBLOBs()) {
+        if (!rules.generateUpdateByCriteriaWithoutBLOBs()) {
             return "updateByCriteria"; //$NON-NLS-1$
         } else if (rules.generateRecordWithBLOBsClass()) {
             return "updateByCriteria"; //$NON-NLS-1$
@@ -151,11 +151,11 @@ public class DefaultDAOMethodNameCalculator implements DAOMethodNameCalculator {
         }
     }
 
-    public String getUpdateByExampleWithoutBLOBsMethodName(
+    public String getUpdateByCriteriaWithoutBLOBsMethodName(
             IntrospectedTable introspectedTable) {
         Rules rules = introspectedTable.getRules();
 
-        if (!rules.generateUpdateByExampleWithBLOBs()) {
+        if (!rules.generateUpdateByCriteriaWithBLOBs()) {
             return "updateByCriteria"; //$NON-NLS-1$
         } else if (rules.generateRecordWithBLOBsClass()) {
             return "updateByCriteria"; //$NON-NLS-1$

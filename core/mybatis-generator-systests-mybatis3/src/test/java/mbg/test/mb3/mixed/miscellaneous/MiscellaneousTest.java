@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -222,7 +222,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             assertEquals(1, rows);
 
             MyObjectCriteria example = new MyObjectCriteria();
-            List<MyObject> answer = mapper.selectByExample(example);
+            List<MyObject> answer = mapper.selectByCriteria(example);
             assertEquals(0, answer.size());
         } finally {
             sqlSession.close();
@@ -230,7 +230,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectDeleteByExample() {
+    public void testMyObjectDeleteByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -255,16 +255,16 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             mapper.insert(record);
 
             MyObjectCriteria example = new MyObjectCriteria();
-            List<MyObject> answer = mapper.selectByExample(example);
+            List<MyObject> answer = mapper.selectByCriteria(example);
             assertEquals(2, answer.size());
 
             example = new MyObjectCriteria();
             example.createCriteria().andLastnameLike("J%");
-            int rows = mapper.deleteByExample(example);
+            int rows = mapper.deleteByCriteria(example);
             assertEquals(1, rows);
 
             example = new MyObjectCriteria();
-            answer = mapper.selectByExample(example);
+            answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
         } finally {
             sqlSession.close();
@@ -311,7 +311,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleLike() {
+    public void testMyObjectSelectByCriteriaLike() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -375,7 +375,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             fn.setValue("B%");
             example.createCriteria().andFirstnameLike(fn);
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = mapper.selectByExample(example);
+            List<MyObject> answer = mapper.selectByCriteria(example);
             assertEquals(3, answer.size());
             MyObject returnedRecord = answer.get(0);
             assertEquals(2, returnedRecord.getId1().intValue());
@@ -392,7 +392,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleNotLike() {
+    public void testMyObjectSelectByCriteriaNotLike() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -456,7 +456,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             fn.setValue("B%");
             example.createCriteria().andFirstnameNotLike(fn);
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = mapper.selectByExample(example);
+            List<MyObject> answer = mapper.selectByCriteria(example);
             assertEquals(3, answer.size());
             MyObject returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -473,7 +473,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleComplexLike() {
+    public void testMyObjectSelectByCriteriaComplexLike() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -541,7 +541,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             example.or(example.createCriteria().andFirstnameLike(fn));
 
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = mapper.selectByExample(example);
+            List<MyObject> answer = mapper.selectByCriteria(example);
             assertEquals(2, answer.size());
             MyObject returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -555,7 +555,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleIn() {
+    public void testMyObjectSelectByCriteriaIn() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -622,7 +622,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             example.createCriteria().andId2In(ids);
 
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = mapper.selectByExample(example);
+            List<MyObject> answer = mapper.selectByCriteria(example);
             assertEquals(4, answer.size());
             MyObject returnedRecord = answer.get(0);
             assertEquals(1, returnedRecord.getId1().intValue());
@@ -649,7 +649,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleBetween() {
+    public void testMyObjectSelectByCriteriaBetween() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -712,7 +712,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             example.createCriteria().andId2Between(1, 3);
 
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = mapper.selectByExample(example);
+            List<MyObject> answer = mapper.selectByCriteria(example);
             assertEquals(6, answer.size());
         } finally {
             sqlSession.close();
@@ -720,7 +720,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectSelectByExampleTimeEquals() {
+    public void testMyObjectSelectByCriteriaTimeEquals() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -748,7 +748,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
 
             MyObjectCriteria example = new MyObjectCriteria();
             example.createCriteria().andTimefieldEqualTo(myTime);
-            List<MyObject> results = mapper.selectByExample(example);
+            List<MyObject> results = mapper.selectByCriteria(example);
             assertEquals(1, results.size());
             MyObject returnedRecord = results.get(0);
 
@@ -778,7 +778,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectUpdateByExampleSelective() {
+    public void testMyObjectUpdateByCriteriaSelective() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -809,10 +809,10 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             fn = new FirstName();
             fn.setValue("B%");
             example.createCriteria().andFirstnameLike(fn);
-            int rows = mapper.updateByExampleSelective(newRecord, example);
+            int rows = mapper.updateByCriteriaSelective(newRecord, example);
             assertEquals(1, rows);
 
-            List<MyObject> answer = mapper.selectByExample(example);
+            List<MyObject> answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
             
             MyObject returnedRecord = answer.get(0);
@@ -827,7 +827,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
     }
 
     @Test
-    public void testMyObjectUpdateByExample() {
+    public void testMyObjectUpdateByCriteria() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -860,10 +860,10 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             example.createCriteria()
                 .andId1EqualTo(3)
                 .andId2EqualTo(4);
-            int rows = mapper.updateByExample(newRecord, example);
+            int rows = mapper.updateByCriteria(newRecord, example);
             assertEquals(1, rows);
 
-            List<MyObject> answer = mapper.selectByExample(example);
+            List<MyObject> answer = mapper.selectByCriteria(example);
             assertEquals(1, answer.size());
             
             MyObject returnedRecord = answer.get(0);
@@ -926,7 +926,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
     }
     
     @Test
-    public void testMyObjectSelectByExampleLikeInsensitive() {
+    public void testMyObjectSelectByCriteriaLikeInsensitive() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
@@ -988,12 +988,12 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             MyObjectCriteria example = new MyObjectCriteria();
             example.createCriteria().andLastnameLike("RU%");
             example.setOrderByClause("ID1, ID2");
-            List<MyObject> answer = mapper.selectByExample(example);
+            List<MyObject> answer = mapper.selectByCriteria(example);
             assertEquals(0, answer.size());
             
             example.clear();
             example.createCriteria().andLastnameLikeInsensitive("RU%");
-            answer = mapper.selectByExample(example);
+            answer = mapper.selectByCriteria(example);
             assertEquals(3, answer.size());
             
             MyObject returnedRecord = answer.get(0);
@@ -1023,7 +1023,7 @@ public class MiscellaneousTest extends AbstractMixedMiscellaneousTest {
             int rows = mapper.insert(enumTest);
             assertEquals(1, rows);
             
-            List<Enumtest> returnedRecords = mapper.selectByExample(null);
+            List<Enumtest> returnedRecords = mapper.selectByCriteria(null);
             assertEquals(1, returnedRecords.size());
             
             Enumtest returnedRecord = returnedRecords.get(0);

@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -200,11 +200,11 @@ public interface Plugin {
             IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the countByExample method has been generated
+     * This method is called when the countByCriteria method has been generated
      * in the client implementation class.
      * 
      * @param method
-     *            the generated countByExample method
+     *            the generated countByCriteria method
      * @param topLevelClass
      *            the partially implemented client implementation class. You can
      *            add additional imported classes to the implementation class if
@@ -217,15 +217,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientCountByExampleMethodGenerated(Method method,
+    boolean clientCountByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the deleteByExample method has been generated
+     * This method is called when the deleteByCriteria method has been generated
      * in the client implementation class.
      * 
      * @param method
-     *            the generated deleteByExample method
+     *            the generated deleteByCriteria method
      * @param topLevelClass
      *            the partially implemented client implementation class. You can
      *            add additional imported classes to the implementation class if
@@ -238,7 +238,7 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientDeleteByExampleMethodGenerated(Method method,
+    boolean clientDeleteByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
@@ -305,11 +305,11 @@ public interface Plugin {
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the selectByExampleWithBLOBs method has been
+     * This method is called when the selectByCriteriaWithBLOBs method has been
      * generated in the client implementation class.
      * 
      * @param method
-     *            the generated selectByExampleWithBLOBs method
+     *            the generated selectByCriteriaWithBLOBs method
      * @param topLevelClass
      *            the partially implemented client implementation class. You can
      *            add additional imported classes to the implementation class if
@@ -322,15 +322,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientSelectByExampleWithBLOBsMethodGenerated(Method method,
+    boolean clientSelectByCriteriaWithBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the selectByExampleWithoutBLOBs method has
+     * This method is called when the selectByCriteriaWithoutBLOBs method has
      * been generated in the client implementation class.
      * 
      * @param method
-     *            the generated selectByExampleWithoutBLOBs method
+     *            the generated selectByCriteriaWithoutBLOBs method
      * @param topLevelClass
      *            the partially implemented client implementation class. You can
      *            add additional imported classes to the implementation class if
@@ -343,7 +343,7 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientSelectByExampleWithoutBLOBsMethodGenerated(Method method,
+    boolean clientSelectByCriteriaWithoutBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
@@ -368,11 +368,11 @@ public interface Plugin {
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleSelective method has been
+     * This method is called when the updateByCriteriaSelective method has been
      * generated in the client implementation class.
      * 
      * @param method
-     *            the generated updateByExampleSelective method
+     *            the generated updateByCriteriaSelective method
      * @param topLevelClass
      *            the partially implemented client implementation class. You can
      *            add additional imported classes to the implementation class if
@@ -385,15 +385,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientUpdateByExampleSelectiveMethodGenerated(Method method,
+    boolean clientUpdateByCriteriaSelectiveMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleWithBLOBs method has been
+     * This method is called when the updateByCriteriaWithBLOBs method has been
      * generated in the client implementation class.
      * 
      * @param method
-     *            the generated updateByExampleWithBLOBs method
+     *            the generated updateByCriteriaWithBLOBs method
      * @param topLevelClass
      *            the partially implemented client implementation class. You can
      *            add additional imported classes to the implementation class if
@@ -406,15 +406,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientUpdateByExampleWithBLOBsMethodGenerated(Method method,
+    boolean clientUpdateByCriteriaWithBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleWithoutBLOBs method has
+     * This method is called when the updateByCriteriaWithoutBLOBs method has
      * been generated in the client implementation class.
      * 
      * @param method
-     *            the generated updateByExampleWithoutBLOBs method
+     *            the generated updateByCriteriaWithoutBLOBs method
      * @param topLevelClass
      *            the partially implemented client implementation class. You can
      *            add additional imported classes to the implementation class if
@@ -427,7 +427,7 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientUpdateByExampleWithoutBLOBsMethodGenerated(Method method,
+    boolean clientUpdateByCriteriaWithoutBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
@@ -494,11 +494,11 @@ public interface Plugin {
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the countByExample method has been generated
+     * This method is called when the countByCriteria method has been generated
      * in the client interface.
      * 
      * @param method
-     *            the generated countByExample method
+     *            the generated countByCriteria method
      * @param interfaze
      *            the partially implemented client interface. You can add
      *            additional imported classes to the interface if
@@ -511,15 +511,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientCountByExampleMethodGenerated(Method method,
+    boolean clientCountByCriteriaMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the deleteByExample method has been generated
+     * This method is called when the deleteByCriteria method has been generated
      * in the client interface.
      * 
      * @param method
-     *            the generated deleteByExample method
+     *            the generated deleteByCriteria method
      * @param interfaze
      *            the partially implemented client interface. You can add
      *            additional imported classes to the interface if
@@ -532,7 +532,7 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientDeleteByExampleMethodGenerated(Method method,
+    boolean clientDeleteByCriteriaMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable);
 
     /**
@@ -642,11 +642,11 @@ public interface Plugin {
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
     
     /**
-     * This method is called when the selectByExampleWithBLOBs method has been
+     * This method is called when the selectByCriteriaWithBLOBs method has been
      * generated in the client interface.
      * 
      * @param method
-     *            the generated selectByExampleWithBLOBs method
+     *            the generated selectByCriteriaWithBLOBs method
      * @param interfaze
      *            the partially implemented client interface. You can add
      *            additional imported classes to the interface if
@@ -659,15 +659,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientSelectByExampleWithBLOBsMethodGenerated(Method method,
+    boolean clientSelectByCriteriaWithBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the selectByExampleWithoutBLOBs method has
+     * This method is called when the selectByCriteriaWithoutBLOBs method has
      * been generated in the client interface.
      * 
      * @param method
-     *            the generated selectByExampleWithoutBLOBs method
+     *            the generated selectByCriteriaWithoutBLOBs method
      * @param interfaze
      *            the partially implemented client interface. You can add
      *            additional imported classes to the interface if
@@ -680,7 +680,7 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientSelectByExampleWithoutBLOBsMethodGenerated(Method method,
+    boolean clientSelectByCriteriaWithoutBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable);
 
     /**
@@ -705,11 +705,11 @@ public interface Plugin {
             Interface interfaze, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleSelective method has been
+     * This method is called when the updateByCriteriaSelective method has been
      * generated in the client interface.
      * 
      * @param method
-     *            the generated updateByExampleSelective method
+     *            the generated updateByCriteriaSelective method
      * @param interfaze
      *            the partially implemented client interface. You can add
      *            additional imported classes to the interface if
@@ -722,15 +722,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientUpdateByExampleSelectiveMethodGenerated(Method method,
+    boolean clientUpdateByCriteriaSelectiveMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleWithBLOBs method has been
+     * This method is called when the updateByCriteriaWithBLOBs method has been
      * generated in the client interface.
      * 
      * @param method
-     *            the generated updateByExampleWithBLOBs method
+     *            the generated updateByCriteriaWithBLOBs method
      * @param interfaze
      *            the partially implemented client interface. You can add
      *            additional imported classes to the interface if
@@ -743,15 +743,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientUpdateByExampleWithBLOBsMethodGenerated(Method method,
+    boolean clientUpdateByCriteriaWithBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleWithoutBLOBs method has
+     * This method is called when the updateByCriteriaWithoutBLOBs method has
      * been generated in the client interface.
      * 
      * @param method
-     *            the generated updateByExampleWithoutBLOBs method
+     *            the generated updateByCriteriaWithoutBLOBs method
      * @param interfaze
      *            the partially implemented client interface. You can add
      *            additional imported classes to the interface if
@@ -764,7 +764,7 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean clientUpdateByExampleWithoutBLOBsMethodGenerated(Method method,
+    boolean clientUpdateByCriteriaWithoutBLOBsMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable);
 
     /**
@@ -1052,7 +1052,7 @@ public interface Plugin {
             IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the countByExample element is generated.
+     * This method is called when the countByCriteria element is generated.
      * 
      * @param element
      *            the generated &lt;select&gt; element
@@ -1064,11 +1064,11 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean sqlMapCountByExampleElementGenerated(XmlElement element,
+    boolean sqlMapCountByCriteriaElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the deleteByExample element is generated.
+     * This method is called when the deleteByCriteria element is generated.
      * 
      * @param element
      *            the generated &lt;delete&gt; element
@@ -1080,7 +1080,7 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean sqlMapDeleteByExampleElementGenerated(XmlElement element,
+    boolean sqlMapDeleteByCriteriaElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable);
 
     /**
@@ -1229,7 +1229,7 @@ public interface Plugin {
             IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the selectByExample element is generated.
+     * This method is called when the selectByCriteria element is generated.
      * 
      * @param element
      *            the generated &lt;select&gt; element
@@ -1241,11 +1241,11 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(
+    boolean sqlMapSelectByCriteriaWithoutBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the selectByExampleWithBLOBs element is
+     * This method is called when the selectByCriteriaWithBLOBs element is
      * generated.
      * 
      * @param element
@@ -1258,11 +1258,11 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean sqlMapSelectByExampleWithBLOBsElementGenerated(XmlElement element,
+    boolean sqlMapSelectByCriteriaWithBLOBsElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleSelective element is
+     * This method is called when the updateByCriteriaSelective element is
      * generated.
      * 
      * @param element
@@ -1275,11 +1275,11 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean sqlMapUpdateByExampleSelectiveElementGenerated(XmlElement element,
+    boolean sqlMapUpdateByCriteriaSelectiveElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleWithBLOBs element is
+     * This method is called when the updateByCriteriaWithBLOBs element is
      * generated.
      * 
      * @param element
@@ -1292,11 +1292,11 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean sqlMapUpdateByExampleWithBLOBsElementGenerated(XmlElement element,
+    boolean sqlMapUpdateByCriteriaWithBLOBsElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleWithourBLOBs element is
+     * This method is called when the updateByCriteriaWithourBLOBs element is
      * generated.
      * 
      * @param element
@@ -1309,7 +1309,7 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean sqlMapUpdateByExampleWithoutBLOBsElementGenerated(
+    boolean sqlMapUpdateByCriteriaWithoutBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable);
 
     /**
@@ -1403,11 +1403,11 @@ public interface Plugin {
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the countByExample method has
+     * This method is called when the countByCriteria method has
      * been generated in the SQL provider.
      * 
      * @param method
-     *            the generated countByExample method
+     *            the generated countByCriteria method
      * @param topLevelClass
      *            the partially generated provider class
      *            You can add additional imported classes to the class
@@ -1420,15 +1420,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean providerCountByExampleMethodGenerated(Method method,
+    boolean providerCountByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the deleteByExample method has
+     * This method is called when the deleteByCriteria method has
      * been generated in the SQL provider.
      * 
      * @param method
-     *            the generated deleteByExample method
+     *            the generated deleteByCriteria method
      * @param topLevelClass
      *            the partially generated provider class
      *            You can add additional imported classes to the class
@@ -1441,7 +1441,7 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean providerDeleteByExampleMethodGenerated(Method method,
+    boolean providerDeleteByCriteriaMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
@@ -1466,11 +1466,11 @@ public interface Plugin {
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the selectByExampleWithBLOBs method has
+     * This method is called when the selectByCriteriaWithBLOBs method has
      * been generated in the SQL provider.
      * 
      * @param method
-     *            the generated selectByExampleWithBLOBs method
+     *            the generated selectByCriteriaWithBLOBs method
      * @param topLevelClass
      *            the partially generated provider class
      *            You can add additional imported classes to the class
@@ -1483,15 +1483,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean providerSelectByExampleWithBLOBsMethodGenerated(Method method,
+    boolean providerSelectByCriteriaWithBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the selectByExampleWithoutBLOBs method has
+     * This method is called when the selectByCriteriaWithoutBLOBs method has
      * been generated in the SQL provider.
      * 
      * @param method
-     *            the generated selectByExampleWithoutBLOBs method
+     *            the generated selectByCriteriaWithoutBLOBs method
      * @param topLevelClass
      *            the partially generated provider class
      *            You can add additional imported classes to the class
@@ -1504,15 +1504,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean providerSelectByExampleWithoutBLOBsMethodGenerated(Method method,
+    boolean providerSelectByCriteriaWithoutBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleSelective method has
+     * This method is called when the updateByCriteriaSelective method has
      * been generated in the SQL provider.
      * 
      * @param method
-     *            the generated updateByExampleSelective method
+     *            the generated updateByCriteriaSelective method
      * @param topLevelClass
      *            the partially generated provider class
      *            You can add additional imported classes to the class
@@ -1525,15 +1525,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean providerUpdateByExampleSelectiveMethodGenerated(Method method,
+    boolean providerUpdateByCriteriaSelectiveMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleWithBLOBs method has
+     * This method is called when the updateByCriteriaWithBLOBs method has
      * been generated in the SQL provider.
      * 
      * @param method
-     *            the generated updateByExampleWithBLOBs method
+     *            the generated updateByCriteriaWithBLOBs method
      * @param topLevelClass
      *            the partially generated provider class
      *            You can add additional imported classes to the class
@@ -1546,15 +1546,15 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean providerUpdateByExampleWithBLOBsMethodGenerated(Method method,
+    boolean providerUpdateByCriteriaWithBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**
-     * This method is called when the updateByExampleWithoutBLOBs method has
+     * This method is called when the updateByCriteriaWithoutBLOBs method has
      * been generated in the SQL provider.
      * 
      * @param method
-     *            the generated updateByExampleWithoutBLOBs method
+     *            the generated updateByCriteriaWithoutBLOBs method
      * @param topLevelClass
      *            the partially generated provider class
      *            You can add additional imported classes to the class
@@ -1567,7 +1567,7 @@ public interface Plugin {
      *         first plugin returning false will disable the calling of further
      *         plugins.
      */
-    boolean providerUpdateByExampleWithoutBLOBsMethodGenerated(Method method,
+    boolean providerUpdateByCriteriaWithoutBLOBsMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable);
 
     /**

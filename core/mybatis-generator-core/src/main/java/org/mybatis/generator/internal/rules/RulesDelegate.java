@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -76,12 +76,12 @@ public class RulesDelegate implements Rules {
         return rules.generateBaseResultMap();
     }
 
-    public boolean generateCountByExample() {
-        return rules.generateCountByExample();
+    public boolean generateCountByCriteria() {
+        return rules.generateCountByCriteria();
     }
 
-    public boolean generateDeleteByExample() {
-        return rules.generateDeleteByExample();
+    public boolean generateDeleteByCriteria() {
+        return rules.generateDeleteByCriteria();
     }
 
     public boolean generateDeleteByPrimaryKey() {
@@ -112,12 +112,12 @@ public class RulesDelegate implements Rules {
         return rules.generateResultMapWithBLOBs();
     }
 
-    public boolean generateSelectByExampleWithBLOBs() {
-        return rules.generateSelectByExampleWithBLOBs();
+    public boolean generateSelectByCriteriaWithBLOBs() {
+        return rules.generateSelectByCriteriaWithBLOBs();
     }
 
-    public boolean generateSelectByExampleWithoutBLOBs() {
-        return rules.generateSelectByExampleWithoutBLOBs();
+    public boolean generateSelectByCriteriaWithoutBLOBs() {
+        return rules.generateSelectByCriteriaWithoutBLOBs();
     }
 
     public boolean generateSelectByPrimaryKey() {
@@ -128,20 +128,20 @@ public class RulesDelegate implements Rules {
         return rules.generateSQLExampleWhereClause();
     }
 
-    public boolean generateMyBatis3UpdateByExampleWhereClause() {
-        return rules.generateMyBatis3UpdateByExampleWhereClause();
+    public boolean generateMyBatis3UpdateByCriteriaWhereClause() {
+        return rules.generateMyBatis3UpdateByCriteriaWhereClause();
     }
 
-    public boolean generateUpdateByExampleSelective() {
-        return rules.generateUpdateByExampleSelective();
+    public boolean generateUpdateByCriteriaSelective() {
+        return rules.generateUpdateByCriteriaSelective();
     }
 
-    public boolean generateUpdateByExampleWithBLOBs() {
-        return rules.generateUpdateByExampleWithBLOBs();
+    public boolean generateUpdateByCriteriaWithBLOBs() {
+        return rules.generateUpdateByCriteriaWithBLOBs();
     }
 
-    public boolean generateUpdateByExampleWithoutBLOBs() {
-        return rules.generateUpdateByExampleWithoutBLOBs();
+    public boolean generateUpdateByCriteriaWithoutBLOBs() {
+        return rules.generateUpdateByCriteriaWithoutBLOBs();
     }
 
     public boolean generateUpdateByPrimaryKeySelective() {

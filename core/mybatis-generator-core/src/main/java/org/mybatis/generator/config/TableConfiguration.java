@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ public class TableConfiguration extends PropertyHolder {
     private boolean selectByPrimaryKeyStatementEnabled;
 
     /** The select by example statement enabled. */
-    private boolean selectByExampleStatementEnabled;
+    private boolean selectByCriteriaStatementEnabled;
 
     /** The update by primary key statement enabled. */
     private boolean updateByPrimaryKeyStatementEnabled;
@@ -54,13 +54,13 @@ public class TableConfiguration extends PropertyHolder {
     private boolean deleteByPrimaryKeyStatementEnabled;
 
     /** The delete by example statement enabled. */
-    private boolean deleteByExampleStatementEnabled;
+    private boolean deleteByCriteriaStatementEnabled;
 
     /** The count by example statement enabled. */
-    private boolean countByExampleStatementEnabled;
+    private boolean countByCriteriaStatementEnabled;
 
     /** The update by example statement enabled. */
-    private boolean updateByExampleStatementEnabled;
+    private boolean updateByCriteriaStatementEnabled;
 
     /** The column overrides. */
     private List<ColumnOverride> columnOverrides;
@@ -75,7 +75,7 @@ public class TableConfiguration extends PropertyHolder {
     private String selectByPrimaryKeyQueryId;
 
     /** The select by example query id. */
-    private String selectByExampleQueryId;
+    private String selectByCriteriaQueryId;
 
     /** The catalog. */
     private String catalog;
@@ -131,12 +131,12 @@ public class TableConfiguration extends PropertyHolder {
 
         insertStatementEnabled = true;
         selectByPrimaryKeyStatementEnabled = true;
-        selectByExampleStatementEnabled = true;
+        selectByCriteriaStatementEnabled = true;
         updateByPrimaryKeyStatementEnabled = true;
         deleteByPrimaryKeyStatementEnabled = true;
-        deleteByExampleStatementEnabled = true;
-        countByExampleStatementEnabled = true;
-        updateByExampleStatementEnabled = true;
+        deleteByCriteriaStatementEnabled = true;
+        countByCriteriaStatementEnabled = true;
+        updateByCriteriaStatementEnabled = true;
     }
 
     /**
@@ -305,19 +305,19 @@ public class TableConfiguration extends PropertyHolder {
      *
      * @return true, if is select by example statement enabled
      */
-    public boolean isSelectByExampleStatementEnabled() {
-        return selectByExampleStatementEnabled;
+    public boolean isSelectByCriteriaStatementEnabled() {
+        return selectByCriteriaStatementEnabled;
     }
 
     /**
      * Sets the select by example statement enabled.
      *
-     * @param selectByExampleStatementEnabled
+     * @param selectByCriteriaStatementEnabled
      *            the new select by example statement enabled
      */
-    public void setSelectByExampleStatementEnabled(
-            boolean selectByExampleStatementEnabled) {
-        this.selectByExampleStatementEnabled = selectByExampleStatementEnabled;
+    public void setSelectByCriteriaStatementEnabled(
+            boolean selectByCriteriaStatementEnabled) {
+        this.selectByCriteriaStatementEnabled = selectByCriteriaStatementEnabled;
     }
 
     /**
@@ -357,18 +357,18 @@ public class TableConfiguration extends PropertyHolder {
      *
      * @return the select by example query id
      */
-    public String getSelectByExampleQueryId() {
-        return selectByExampleQueryId;
+    public String getSelectByCriteriaQueryId() {
+        return selectByCriteriaQueryId;
     }
 
     /**
      * Sets the select by example query id.
      *
-     * @param selectByExampleQueryId
+     * @param selectByCriteriaQueryId
      *            the new select by example query id
      */
-    public void setSelectByExampleQueryId(String selectByExampleQueryId) {
-        this.selectByExampleQueryId = selectByExampleQueryId;
+    public void setSelectByCriteriaQueryId(String selectByCriteriaQueryId) {
+        this.selectByCriteriaQueryId = selectByCriteriaQueryId;
     }
 
     /**
@@ -395,19 +395,19 @@ public class TableConfiguration extends PropertyHolder {
      *
      * @return true, if is delete by example statement enabled
      */
-    public boolean isDeleteByExampleStatementEnabled() {
-        return deleteByExampleStatementEnabled;
+    public boolean isDeleteByCriteriaStatementEnabled() {
+        return deleteByCriteriaStatementEnabled;
     }
 
     /**
      * Sets the delete by example statement enabled.
      *
-     * @param deleteByExampleStatementEnabled
+     * @param deleteByCriteriaStatementEnabled
      *            the new delete by example statement enabled
      */
-    public void setDeleteByExampleStatementEnabled(
-            boolean deleteByExampleStatementEnabled) {
-        this.deleteByExampleStatementEnabled = deleteByExampleStatementEnabled;
+    public void setDeleteByCriteriaStatementEnabled(
+            boolean deleteByCriteriaStatementEnabled) {
+        this.deleteByCriteriaStatementEnabled = deleteByCriteriaStatementEnabled;
     }
 
     /**
@@ -416,13 +416,13 @@ public class TableConfiguration extends PropertyHolder {
      * @return true, if successful
      */
     public boolean areAnyStatementsEnabled() {
-        return selectByExampleStatementEnabled
+        return selectByCriteriaStatementEnabled
                 || selectByPrimaryKeyStatementEnabled || insertStatementEnabled
                 || updateByPrimaryKeyStatementEnabled
-                || deleteByExampleStatementEnabled
+                || deleteByCriteriaStatementEnabled
                 || deleteByPrimaryKeyStatementEnabled
-                || countByExampleStatementEnabled
-                || updateByExampleStatementEnabled;
+                || countByCriteriaStatementEnabled
+                || updateByCriteriaStatementEnabled;
     }
 
     /**
@@ -634,9 +634,9 @@ public class TableConfiguration extends PropertyHolder {
                     "enableSelectByPrimaryKey", "false")); //$NON-NLS-1$ //$NON-NLS-2$
         }
 
-        if (!selectByExampleStatementEnabled) {
+        if (!selectByCriteriaStatementEnabled) {
             xmlElement.addAttribute(new Attribute(
-                    "enableSelectByExample", "false")); //$NON-NLS-1$ //$NON-NLS-2$
+                    "enableSelectByCriteria", "false")); //$NON-NLS-1$ //$NON-NLS-2$
         }
 
         if (!updateByPrimaryKeyStatementEnabled) {
@@ -649,19 +649,19 @@ public class TableConfiguration extends PropertyHolder {
                     "enableDeleteByPrimaryKey", "false")); //$NON-NLS-1$ //$NON-NLS-2$
         }
 
-        if (!deleteByExampleStatementEnabled) {
+        if (!deleteByCriteriaStatementEnabled) {
             xmlElement.addAttribute(new Attribute(
-                    "enableDeleteByExample", "false")); //$NON-NLS-1$ //$NON-NLS-2$
+                    "enableDeleteByCriteria", "false")); //$NON-NLS-1$ //$NON-NLS-2$
         }
 
-        if (!countByExampleStatementEnabled) {
+        if (!countByCriteriaStatementEnabled) {
             xmlElement.addAttribute(new Attribute(
-                    "enableCountByExample", "false")); //$NON-NLS-1$ //$NON-NLS-2$
+                    "enableCountByCriteria", "false")); //$NON-NLS-1$ //$NON-NLS-2$
         }
 
-        if (!updateByExampleStatementEnabled) {
+        if (!updateByCriteriaStatementEnabled) {
             xmlElement.addAttribute(new Attribute(
-                    "enableUpdateByExample", "false")); //$NON-NLS-1$ //$NON-NLS-2$
+                    "enableUpdateByCriteria", "false")); //$NON-NLS-1$ //$NON-NLS-2$
         }
 
         if (stringHasValue(selectByPrimaryKeyQueryId)) {
@@ -669,9 +669,9 @@ public class TableConfiguration extends PropertyHolder {
                     "selectByPrimaryKeyQueryId", selectByPrimaryKeyQueryId)); //$NON-NLS-1$
         }
 
-        if (stringHasValue(selectByExampleQueryId)) {
+        if (stringHasValue(selectByCriteriaQueryId)) {
             xmlElement.addAttribute(new Attribute(
-                    "selectByExampleQueryId", selectByExampleQueryId)); //$NON-NLS-1$
+                    "selectByCriteriaQueryId", selectByCriteriaQueryId)); //$NON-NLS-1$
         }
 
         if (configuredModelType != null) {
@@ -764,19 +764,19 @@ public class TableConfiguration extends PropertyHolder {
      *
      * @return true, if is count by example statement enabled
      */
-    public boolean isCountByExampleStatementEnabled() {
-        return countByExampleStatementEnabled;
+    public boolean isCountByCriteriaStatementEnabled() {
+        return countByCriteriaStatementEnabled;
     }
 
     /**
      * Sets the count by example statement enabled.
      *
-     * @param countByExampleStatementEnabled
+     * @param countByCriteriaStatementEnabled
      *            the new count by example statement enabled
      */
-    public void setCountByExampleStatementEnabled(
-            boolean countByExampleStatementEnabled) {
-        this.countByExampleStatementEnabled = countByExampleStatementEnabled;
+    public void setCountByCriteriaStatementEnabled(
+            boolean countByCriteriaStatementEnabled) {
+        this.countByCriteriaStatementEnabled = countByCriteriaStatementEnabled;
     }
 
     /**
@@ -784,19 +784,19 @@ public class TableConfiguration extends PropertyHolder {
      *
      * @return true, if is update by example statement enabled
      */
-    public boolean isUpdateByExampleStatementEnabled() {
-        return updateByExampleStatementEnabled;
+    public boolean isUpdateByCriteriaStatementEnabled() {
+        return updateByCriteriaStatementEnabled;
     }
 
     /**
      * Sets the update by example statement enabled.
      *
-     * @param updateByExampleStatementEnabled
+     * @param updateByCriteriaStatementEnabled
      *            the new update by example statement enabled
      */
-    public void setUpdateByExampleStatementEnabled(
-            boolean updateByExampleStatementEnabled) {
-        this.updateByExampleStatementEnabled = updateByExampleStatementEnabled;
+    public void setUpdateByCriteriaStatementEnabled(
+            boolean updateByCriteriaStatementEnabled) {
+        this.updateByCriteriaStatementEnabled = updateByCriteriaStatementEnabled;
     }
 
     /**
@@ -823,9 +823,9 @@ public class TableConfiguration extends PropertyHolder {
         // when using column indexes, either both or neither query ids
         // should be set
         if (isTrue(getProperty(PropertyRegistry.TABLE_USE_COLUMN_INDEXES))
-                && selectByExampleStatementEnabled
+                && selectByCriteriaStatementEnabled
                 && selectByPrimaryKeyStatementEnabled) {
-            boolean queryId1Set = stringHasValue(selectByExampleQueryId);
+            boolean queryId1Set = stringHasValue(selectByCriteriaQueryId);
             boolean queryId2Set = stringHasValue(selectByPrimaryKeyQueryId);
 
             if (queryId1Set != queryId2Set) {

@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -88,7 +88,7 @@ public interface DAOMethodNameCalculator {
      *            the introspected table
      * @return the calculated name
      */
-    String getSelectByExampleWithoutBLOBsMethodName(
+    String getSelectByCriteriaWithoutBLOBsMethodName(
             IntrospectedTable introspectedTable);
 
     /**
@@ -99,7 +99,7 @@ public interface DAOMethodNameCalculator {
      *            the introspected table
      * @return the calculated name
      */
-    String getSelectByExampleWithBLOBsMethodName(
+    String getSelectByCriteriaWithBLOBsMethodName(
             IntrospectedTable introspectedTable);
 
     /**
@@ -118,7 +118,7 @@ public interface DAOMethodNameCalculator {
      *            the introspected table
      * @return the calculated name
      */
-    String getDeleteByExampleMethodName(IntrospectedTable introspectedTable);
+    String getDeleteByCriteriaMethodName(IntrospectedTable introspectedTable);
 
     /**
      * Calculates and returns a name for the count by example method.
@@ -127,7 +127,7 @@ public interface DAOMethodNameCalculator {
      *            the introspected table
      * @return the calculated name
      */
-    String getCountByExampleMethodName(IntrospectedTable introspectedTable);
+    String getCountByCriteriaMethodName(IntrospectedTable introspectedTable);
 
     /**
      * Calculates and returns a name for the update by example selective method.
@@ -136,7 +136,7 @@ public interface DAOMethodNameCalculator {
      *            the introspected table
      * @return the calculated name
      */
-    String getUpdateByExampleSelectiveMethodName(
+    String getUpdateByCriteriaSelectiveMethodName(
             IntrospectedTable introspectedTable);
 
     /**
@@ -146,7 +146,7 @@ public interface DAOMethodNameCalculator {
      *            the introspected table
      * @return the calculated name
      */
-    String getUpdateByExampleWithBLOBsMethodName(
+    String getUpdateByCriteriaWithBLOBsMethodName(
             IntrospectedTable introspectedTable);
 
     /**
@@ -156,6 +156,6 @@ public interface DAOMethodNameCalculator {
      *            the introspected table
      * @return the calculated name
      */
-    String getUpdateByExampleWithoutBLOBsMethodName(
+    String getUpdateByCriteriaWithoutBLOBsMethodName(
             IntrospectedTable introspectedTable);
 }

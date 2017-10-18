@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -88,13 +88,13 @@ public abstract class AbstractXmlElementGenerator extends AbstractGenerator {
         return ifElement;
     }
 
-    protected XmlElement getUpdateByExampleIncludeElement() {
+    protected XmlElement getUpdateByCriteriaIncludeElement() {
         XmlElement ifElement = new XmlElement("if"); //$NON-NLS-1$
         ifElement.addAttribute(new Attribute("test", "_parameter != null")); //$NON-NLS-1$ //$NON-NLS-2$
 
         XmlElement includeElement = new XmlElement("include"); //$NON-NLS-1$
         includeElement.addAttribute(new Attribute("refid", //$NON-NLS-1$
-                introspectedTable.getMyBatis3UpdateByExampleWhereClauseId()));
+                introspectedTable.getMyBatis3UpdateByCriteriaWhereClauseId()));
         ifElement.addElement(includeElement);
 
         return ifElement;

@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -33,18 +33,18 @@ import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.mybatis.generator.codegen.AbstractJavaClientGenerator;
 import org.mybatis.generator.codegen.AbstractXmlGenerator;
 import org.mybatis.generator.codegen.ibatis2.dao.elements.AbstractDAOElementGenerator;
-import org.mybatis.generator.codegen.ibatis2.dao.elements.CountByExampleMethodGenerator;
-import org.mybatis.generator.codegen.ibatis2.dao.elements.DeleteByExampleMethodGenerator;
+import org.mybatis.generator.codegen.ibatis2.dao.elements.CountByCriteriaMethodGenerator;
+import org.mybatis.generator.codegen.ibatis2.dao.elements.DeleteByCriteriaMethodGenerator;
 import org.mybatis.generator.codegen.ibatis2.dao.elements.DeleteByPrimaryKeyMethodGenerator;
 import org.mybatis.generator.codegen.ibatis2.dao.elements.InsertMethodGenerator;
 import org.mybatis.generator.codegen.ibatis2.dao.elements.InsertSelectiveMethodGenerator;
-import org.mybatis.generator.codegen.ibatis2.dao.elements.SelectByExampleWithBLOBsMethodGenerator;
-import org.mybatis.generator.codegen.ibatis2.dao.elements.SelectByExampleWithoutBLOBsMethodGenerator;
+import org.mybatis.generator.codegen.ibatis2.dao.elements.SelectByCriteriaWithBLOBsMethodGenerator;
+import org.mybatis.generator.codegen.ibatis2.dao.elements.SelectByCriteriaWithoutBLOBsMethodGenerator;
 import org.mybatis.generator.codegen.ibatis2.dao.elements.SelectByPrimaryKeyMethodGenerator;
-import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByExampleParmsInnerclassGenerator;
-import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByExampleSelectiveMethodGenerator;
-import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByExampleWithBLOBsMethodGenerator;
-import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByExampleWithoutBLOBsMethodGenerator;
+import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByCriteriaParmsInnerclassGenerator;
+import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByCriteriaSelectiveMethodGenerator;
+import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByCriteriaWithBLOBsMethodGenerator;
+import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByCriteriaWithoutBLOBsMethodGenerator;
 import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByPrimaryKeySelectiveMethodGenerator;
 import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByPrimaryKeyWithBLOBsMethodGenerator;
 import org.mybatis.generator.codegen.ibatis2.dao.elements.UpdateByPrimaryKeyWithoutBLOBsMethodGenerator;
@@ -77,18 +77,18 @@ public class DAOGenerator extends AbstractJavaClientGenerator {
         TopLevelClass topLevelClass = getTopLevelClassShell();
         Interface interfaze = getInterfaceShell();
 
-        addCountByExampleMethod(topLevelClass, interfaze);
-        addDeleteByExampleMethod(topLevelClass, interfaze);
+        addCountByCriteriaMethod(topLevelClass, interfaze);
+        addDeleteByCriteriaMethod(topLevelClass, interfaze);
         addDeleteByPrimaryKeyMethod(topLevelClass, interfaze);
         addInsertMethod(topLevelClass, interfaze);
         addInsertSelectiveMethod(topLevelClass, interfaze);
-        addSelectByExampleWithBLOBsMethod(topLevelClass, interfaze);
-        addSelectByExampleWithoutBLOBsMethod(topLevelClass, interfaze);
+        addSelectByCriteriaWithBLOBsMethod(topLevelClass, interfaze);
+        addSelectByCriteriaWithoutBLOBsMethod(topLevelClass, interfaze);
         addSelectByPrimaryKeyMethod(topLevelClass, interfaze);
-        addUpdateByExampleParmsInnerclass(topLevelClass, interfaze);
-        addUpdateByExampleSelectiveMethod(topLevelClass, interfaze);
-        addUpdateByExampleWithBLOBsMethod(topLevelClass, interfaze);
-        addUpdateByExampleWithoutBLOBsMethod(topLevelClass, interfaze);
+        addUpdateByCriteriaParmsInnerclass(topLevelClass, interfaze);
+        addUpdateByCriteriaSelectiveMethod(topLevelClass, interfaze);
+        addUpdateByCriteriaWithBLOBsMethod(topLevelClass, interfaze);
+        addUpdateByCriteriaWithoutBLOBsMethod(topLevelClass, interfaze);
         addUpdateByPrimaryKeySelectiveMethod(topLevelClass, interfaze);
         addUpdateByPrimaryKeyWithBLOBsMethod(topLevelClass, interfaze);
         addUpdateByPrimaryKeyWithoutBLOBsMethod(topLevelClass, interfaze);
@@ -172,20 +172,20 @@ public class DAOGenerator extends AbstractJavaClientGenerator {
         return answer;
     }
 
-    protected void addCountByExampleMethod(TopLevelClass topLevelClass,
+    protected void addCountByCriteriaMethod(TopLevelClass topLevelClass,
             Interface interfaze) {
-        if (introspectedTable.getRules().generateCountByExample()) {
-            AbstractDAOElementGenerator methodGenerator = new CountByExampleMethodGenerator(
+        if (introspectedTable.getRules().generateCountByCriteria()) {
+            AbstractDAOElementGenerator methodGenerator = new CountByCriteriaMethodGenerator(
                     generateForJava5);
             initializeAndExecuteGenerator(methodGenerator, topLevelClass,
                     interfaze);
         }
     }
 
-    protected void addDeleteByExampleMethod(TopLevelClass topLevelClass,
+    protected void addDeleteByCriteriaMethod(TopLevelClass topLevelClass,
             Interface interfaze) {
-        if (introspectedTable.getRules().generateDeleteByExample()) {
-            AbstractDAOElementGenerator methodGenerator = new DeleteByExampleMethodGenerator();
+        if (introspectedTable.getRules().generateDeleteByCriteria()) {
+            AbstractDAOElementGenerator methodGenerator = new DeleteByCriteriaMethodGenerator();
             initializeAndExecuteGenerator(methodGenerator, topLevelClass,
                     interfaze);
         }
@@ -218,20 +218,20 @@ public class DAOGenerator extends AbstractJavaClientGenerator {
         }
     }
 
-    protected void addSelectByExampleWithBLOBsMethod(
+    protected void addSelectByCriteriaWithBLOBsMethod(
             TopLevelClass topLevelClass, Interface interfaze) {
-        if (introspectedTable.getRules().generateSelectByExampleWithBLOBs()) {
-            AbstractDAOElementGenerator methodGenerator = new SelectByExampleWithBLOBsMethodGenerator(
+        if (introspectedTable.getRules().generateSelectByCriteriaWithBLOBs()) {
+            AbstractDAOElementGenerator methodGenerator = new SelectByCriteriaWithBLOBsMethodGenerator(
                     generateForJava5);
             initializeAndExecuteGenerator(methodGenerator, topLevelClass,
                     interfaze);
         }
     }
 
-    protected void addSelectByExampleWithoutBLOBsMethod(
+    protected void addSelectByCriteriaWithoutBLOBsMethod(
             TopLevelClass topLevelClass, Interface interfaze) {
-        if (introspectedTable.getRules().generateSelectByExampleWithoutBLOBs()) {
-            AbstractDAOElementGenerator methodGenerator = new SelectByExampleWithoutBLOBsMethodGenerator(
+        if (introspectedTable.getRules().generateSelectByCriteriaWithoutBLOBs()) {
+            AbstractDAOElementGenerator methodGenerator = new SelectByCriteriaWithoutBLOBsMethodGenerator(
                     generateForJava5);
             initializeAndExecuteGenerator(methodGenerator, topLevelClass,
                     interfaze);
@@ -247,40 +247,40 @@ public class DAOGenerator extends AbstractJavaClientGenerator {
         }
     }
 
-    protected void addUpdateByExampleParmsInnerclass(
+    protected void addUpdateByCriteriaParmsInnerclass(
             TopLevelClass topLevelClass, Interface interfaze) {
         Rules rules = introspectedTable.getRules();
-        if (rules.generateUpdateByExampleSelective()
-                || rules.generateUpdateByExampleWithBLOBs()
-                || rules.generateUpdateByExampleWithoutBLOBs()) {
-            AbstractDAOElementGenerator methodGenerator = new UpdateByExampleParmsInnerclassGenerator();
+        if (rules.generateUpdateByCriteriaSelective()
+                || rules.generateUpdateByCriteriaWithBLOBs()
+                || rules.generateUpdateByCriteriaWithoutBLOBs()) {
+            AbstractDAOElementGenerator methodGenerator = new UpdateByCriteriaParmsInnerclassGenerator();
             initializeAndExecuteGenerator(methodGenerator, topLevelClass,
                     interfaze);
         }
     }
 
-    protected void addUpdateByExampleSelectiveMethod(
+    protected void addUpdateByCriteriaSelectiveMethod(
             TopLevelClass topLevelClass, Interface interfaze) {
-        if (introspectedTable.getRules().generateUpdateByExampleSelective()) {
-            AbstractDAOElementGenerator methodGenerator = new UpdateByExampleSelectiveMethodGenerator();
+        if (introspectedTable.getRules().generateUpdateByCriteriaSelective()) {
+            AbstractDAOElementGenerator methodGenerator = new UpdateByCriteriaSelectiveMethodGenerator();
             initializeAndExecuteGenerator(methodGenerator, topLevelClass,
                     interfaze);
         }
     }
 
-    protected void addUpdateByExampleWithBLOBsMethod(
+    protected void addUpdateByCriteriaWithBLOBsMethod(
             TopLevelClass topLevelClass, Interface interfaze) {
-        if (introspectedTable.getRules().generateUpdateByExampleWithBLOBs()) {
-            AbstractDAOElementGenerator methodGenerator = new UpdateByExampleWithBLOBsMethodGenerator();
+        if (introspectedTable.getRules().generateUpdateByCriteriaWithBLOBs()) {
+            AbstractDAOElementGenerator methodGenerator = new UpdateByCriteriaWithBLOBsMethodGenerator();
             initializeAndExecuteGenerator(methodGenerator, topLevelClass,
                     interfaze);
         }
     }
 
-    protected void addUpdateByExampleWithoutBLOBsMethod(
+    protected void addUpdateByCriteriaWithoutBLOBsMethod(
             TopLevelClass topLevelClass, Interface interfaze) {
-        if (introspectedTable.getRules().generateUpdateByExampleWithoutBLOBs()) {
-            AbstractDAOElementGenerator methodGenerator = new UpdateByExampleWithoutBLOBsMethodGenerator();
+        if (introspectedTable.getRules().generateUpdateByCriteriaWithoutBLOBs()) {
+            AbstractDAOElementGenerator methodGenerator = new UpdateByCriteriaWithoutBLOBsMethodGenerator();
             initializeAndExecuteGenerator(methodGenerator, topLevelClass,
                     interfaze);
         }
