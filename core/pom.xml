@@ -343,11 +343,7 @@
 	<distributionManagement>
 		<repository>
 			<id>thirdparty</id>
-			<url>http://nexus.haierfintech.xin:70/nexus/content/repositories/thirdparty</url>
+			<url>http://localhost:9089/nexus/content/repositories/thirdparty</url>
 		</repository>
-		<snapshotRepository>
-			<id>Snapshots</id>
-			<url>http://nexus.haierfintech.xin:70/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
 	</distributionManagement>
 </project>
